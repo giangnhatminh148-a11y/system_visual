@@ -444,7 +444,12 @@ function renderState(state) {
     ? `\n        <text data-detail="fine" x="${state.x + (hasBrand ? 23 : 10)}" y="${state.y + 14}" class="${accent}" font-size="7" font-weight="700">${esc(state.step)}</text>`
     : '';
   const brand = renderBrandMark(state, { x: state.x + state.width - 22, y: state.y + 6 });
-  const labelFontSize = fittedNodeFontSize(state.label, brandLabelFitWidth(state, state.width), 10, 8);
+  // The step badge occupies the top-left corner exactly where a centered
+  // label's leading glyphs land; reserve that width the same way brand
+  // marks reserve the top-right corner, so long labels shrink to clear it
+  // instead of rendering underneath the badge.
+  const stepFitWidth = state.step ? Math.max(1, state.width - 34) : state.width;
+  const labelFontSize = fittedNodeFontSize(state.label, brandLabelFitWidth(state, stepFitWidth), 10, 8);
   const passport = {
     kind: state.type,
     sublabel: state.sublabel,
