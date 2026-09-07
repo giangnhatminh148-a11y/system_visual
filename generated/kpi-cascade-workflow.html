@@ -4959,7 +4959,7 @@
       </div>
     </div>
 
-    <script id="archify-guided-views-data" type="application/json">[{"id":"happy-path","label":"Đăng ký đến giao HRBP","focus":["tasks_source","pm_register","tbp_ptda","truong_phong","lock_monitor","finalize","hrbp"],"note":"Toàn bộ chu kỳ 1 tháng: từ dữ liệu Tasks/WBS đến khi HRBP nhận báo cáo."},{"id":"and-join","label":"AND-join duyệt phân cấp","focus":["pm_register","tbp_ptda","tbp_tkda","truong_phong"],"note":"Trưởng Phòng chỉ duyệt sau khi CẢ 2 Trưởng Bộ Phận (PTDA và TKDA) đã duyệt xong."},{"id":"open-risk","label":"2 điểm còn mở (chưa chốt)","focus":["pm_register","lock_monitor"],"note":"Trọng số tự đặt chưa chuẩn hoá SOP-WBS; trạng thái giám sát giữa tháng chưa có trong schema kpi_reports hiện tại."}]</script>
+    <script id="archify-guided-views-data" type="application/json">[{"id":"happy-path","label":"Đăng ký đến giao HRBP","focus":["reg_ptda","reg_tkda","tbp_ptda","tbp_tkda","truong_phong","lock_monitor","finalize","hrbp"],"note":"Toàn bộ chu kỳ 1 tháng: 2 nguồn dữ liệu khác nhau theo bộ phận, hội tụ ở Trưởng Phòng, đến khi HRBP nhận báo cáo."},{"id":"and-join","label":"AND-join duyệt phân cấp","focus":["reg_ptda","reg_tkda","tbp_ptda","tbp_tkda","truong_phong"],"note":"Trưởng Phòng chỉ duyệt sau khi CẢ 2 TBP xong — mỗi TBP duyệt đúng nguồn dữ liệu bộ phận mình, không cùng 1 item."},{"id":"data-sources","label":"Nguồn dữ liệu KPI khác nhau theo bộ phận","focus":["reg_ptda","reg_tkda"],"note":"PTDA: project_requests / survey_reports / scenario_baselines (SOP_PTDA). TKDA: tasks + progress_items dự án lớn."},{"id":"open-risk","label":"Điểm còn mở (chưa chốt)","focus":["reg_ptda","reg_tkda","lock_monitor"],"note":"Trọng số tự đặt chưa chuẩn hoá SOP-WBS; trạng thái giám sát giữa tháng chưa có trong schema kpi_reports hiện tại."}]</script>
 
     <script id="archify-i18n-data" type="application/json">{"locale":"en","messages":{"viewer.kind.frontend":"Frontend","viewer.kind.backend":"Backend","viewer.kind.database":"Database","viewer.kind.cloud":"Cloud","viewer.kind.security":"Security","viewer.kind.messagebus":"Message bus","viewer.kind.external":"External","viewer.kind.neutral":"Neutral","viewer.kind.node":"Node","viewer.kind.start":"Start","viewer.kind.active":"Active","viewer.kind.waiting":"Waiting","viewer.kind.decision":"Decision","viewer.kind.success":"Success","viewer.kind.failure":"Failure","viewer.toolbar.actions":"Diagram actions","viewer.theme.toggle.title":"Toggle theme (T)","viewer.theme.toggle":"Toggle color theme","viewer.theme.dark":"Dark","viewer.theme.light":"Light","viewer.preset.choose.title":"Choose visual style (S cycles)","viewer.preset.choose":"Choose visual style","viewer.preset.style":"Style","viewer.preset.menu":"Visual style","viewer.preset.identity":"Visual identity","viewer.preset.cycles":"S cycles","viewer.preset.classic":"Classic","viewer.preset.classic.short":"Classic","viewer.preset.classic.hint":"Stable technical default","viewer.preset.flow":"Signal Flow","viewer.preset.flow.short":"Flow","viewer.preset.flow.hint":"Motion-forward presentation","viewer.preset.blueprint":"Blueprint","viewer.preset.blueprint.hint":"Engineering review","viewer.preset.editorial":"Editorial","viewer.preset.editorial.hint":"Publication and launch notes","viewer.preset.badge.signalFlow":"SIGNAL FLOW","viewer.preset.badge.blueprint":"BLUEPRINT / REV 01","viewer.preset.badge.editorial":"EDITORIAL / FIELD NOTE","viewer.preset.badge.editorialPlate":"ARCHIFY / PLATE 04","viewer.preset.current":"Visual style: {style}. Choose visual style","viewer.motion.live":"Live","viewer.motion.still":"Still","viewer.motion.pause":"Pause motion","viewer.motion.resume":"Resume motion","viewer.motion.reduced":"Motion paused by reduced-motion preference","viewer.motion.hidden":"Motion paused while this page is hidden","viewer.motion.yielding":"Pause motion; currently yielding to {owner}","viewer.motion.yielding.title":"Live preview enabled · yielding to {owner}","viewer.owner.story":"the guided story","viewer.owner.chapter":"the active chapter","viewer.owner.chapterPreview":"the chapter delta preview","viewer.owner.handoff":"the chapter handoff","viewer.owner.route":"Route Probe","viewer.owner.lens":"Semantic Lens","viewer.owner.relationship":"Relationship Preview","viewer.owner.intent":"Intent Trace","viewer.owner.focus":"semantic focus","viewer.owner.legend":"legend preview","viewer.owner.reader":"reader interaction","viewer.present.enter":"Enter presentation stage","viewer.present.enter.title":"Presentation stage (F)","viewer.present.exit":"Exit presentation stage","viewer.present.exit.title":"Exit presentation stage (F or Escape)","viewer.present.present":"Present","viewer.present.exit.label":"Exit","viewer.export.button":"Export","viewer.export.button.title":"Export diagram (E)","viewer.export.diagram":"Export diagram","viewer.export.menu":"Export","viewer.export.subtitle":"Portable, clean outputs","viewer.export.share":"Share","viewer.export.shareCard":"Share Card","viewer.export.routeShareCard":"Route Share Card","viewer.export.reachShareCard":"Reach Share Card","viewer.export.copyShareCard":"Copy Share Card","viewer.export.copyDiagram":"Copy diagram","viewer.export.clipboardPng":"PNG to clipboard","viewer.export.raster":"Raster images","viewer.export.image":"Image","viewer.export.lossless":"Lossless image","viewer.export.compact":"Compact image","viewer.export.modern":"Modern image","viewer.export.vectorMotion":"Vector and motion","viewer.export.vectorMotion.heading":"Vector \u0026 motion","viewer.export.editable":"Editable vector","viewer.export.motion6s":"6s motion","viewer.export.unsupported":"Not supported by this browser","viewer.export.clipboardUnsupported":"Clipboard image write not supported by this browser","viewer.export.clipboardUnsupported.period":"Clipboard image write not supported by this browser.","viewer.export.clipboardUnsupported.short":"Clipboard image write not supported in this browser.","viewer.export.motionUnavailable":"Motion capture unavailable in this browser","viewer.export.webmUnavailable":"WebM unavailable in this browser","viewer.export.failed":"Export failed: {message}","viewer.export.unknownVariant":"Unknown Share Card variant: {variant}","viewer.export.routeRequired":"Trace a route before exporting a Route Share Card","viewer.export.reachRequired":"Trace authored reach before exporting a Reach Share Card","viewer.export.unknown":"unknown","viewer.export.routeFailed":"Route Share Card export failed: {message}","viewer.export.reachFailed":"Reach Share Card export failed: {message}","viewer.export.copyFailed":"Copy failed: {message}","viewer.export.copiedPng":"Copied PNG to clipboard","viewer.export.copiedShare":"Copied Share Card","viewer.export.downloadedShare":"Downloaded Share Card","viewer.export.downloadedRoute":"Downloaded Route Share Card","viewer.export.downloadedReach":"Downloaded Reach Share Card","viewer.export.downloadedWebm":"Downloaded WebM","viewer.export.recording":"Recording 6 seconds of motion…","viewer.export.card.routeSummary.one":"Route: {source} → {target} · {count} directed hop","viewer.export.card.routeSummary.other":"Route: {source} → {target} · {count} directed hops","viewer.export.card.reachSummary":"Authored {direction} from {origin} · {nodes} · {links} · max {hops}","viewer.export.card.node.one":"{count} node","viewer.export.card.node.other":"{count} nodes","viewer.export.card.link.one":"{count} link","viewer.export.card.link.other":"{count} links","viewer.export.card.hop.one":"{count} hop","viewer.export.card.hop.other":"{count} hops","viewer.export.card.routeBadge":"ARCHIFY · ROUTE · {hops}","viewer.export.card.reachBadge":"ARCHIFY · {direction} REACH","viewer.export.card.defaultBadge":"ARCHIFY · {preset} · {theme}","viewer.export.direction.upstream":"Upstream","viewer.export.direction.downstream":"Downstream","viewer.export.error.canvasUnavailable":"Canvas unavailable for {label}","viewer.export.error.contextUnavailable":"2D canvas context unavailable for {label}","viewer.export.error.toBlobUnavailable":"canvas.toBlob unavailable for {label}","viewer.export.error.toBlobNull":"canvas.toBlob returned no data for {label}","viewer.export.error.variantsCombined":"Share Card variants cannot be combined","viewer.export.error.viewerState":"Share Card export could not remove temporary viewer state","viewer.export.error.routeState":"Route Card export could not preserve the resolved route safely","viewer.export.error.reachState":"Reach Card export could not preserve authored reach safely","viewer.export.error.webmRequirements":"WebM motion export requires a trace animation and browser MediaRecorder support","viewer.export.error.mediaRecorder":"MediaRecorder failed","viewer.export.error.emptyWebm":"MediaRecorder produced an empty WebM","viewer.export.error.webmBackground":"SVG background could not be loaded for WebM export","viewer.guided.region":"Guided diagram views","viewer.guided.previous":"Previous guided view","viewer.guided.previous.title":"Previous guided view ([)","viewer.guided.next":"Next guided view","viewer.guided.next.title":"Next guided view (])","viewer.guided.views":"Guided views","viewer.guided.explore":"Explore this system","viewer.guided.intro":"Step through curated paths without changing the source diagram.","viewer.guided.trail":"Story trail","viewer.guided.beat":"Beat","viewer.guided.nextBeat":"Next","viewer.guided.play":"Play guided story","viewer.guided.play.title":"Play guided story (P)","viewer.guided.pause":"Pause guided story","viewer.guided.pause.title":"Pause guided story (P)","viewer.guided.replay":"Replay guided story","viewer.guided.replay.title":"Replay guided story (P)","viewer.guided.playStory":"Play story","viewer.guided.pauseStory":"Pause","viewer.guided.replayStory":"Replay story","viewer.guided.motionUnavailable":"Story playback unavailable while motion is Still","viewer.guided.enableMotion":"Switch motion to Live to play the guided story","viewer.guided.selectBeatLink":"Select a Story Beat to copy its exact link","viewer.guided.copyMoment":"Copy moment","viewer.guided.momentCopied":"Moment link copied","viewer.guided.momentCopyFailed":"Could not copy story moment link","viewer.guided.copied":"Copied","viewer.guided.copyFailed":"Copy failed","viewer.guided.showAll":"Show all","viewer.guided.showAll.aria":"Show entire diagram","viewer.guided.chapters":"Story chapters","viewer.guided.storyTrail":"Story trail for {label}: {count} beats","viewer.guided.chapter.open":"Open chapter {index} of {total}: {label}, {count} stops","viewer.guided.chapter.current":"Current chapter {index} of {total}: {label}, {count} stops","viewer.guided.chapter.selectedNodes":"{count} selected nodes","viewer.guided.chapter.stops":"{count} stops","viewer.guided.chapter.stop.one":"{count} stop","viewer.guided.chapter.stop.other":"{count} stops","viewer.guided.chapter.current.title":"{label} — current chapter, {count} stops","viewer.guided.chapter.delta.expanded":"{stay} stay, {enter} enter, {leave} leave","viewer.guided.chapter.delta.aria":"Open chapter {index} of {total}: {label}. Chapter focus delta: {delta}","viewer.guided.chapter.delta.title":"{label} — {delta} chapter focus","viewer.guided.handoff":"{from} → {to} · via {label}","viewer.guided.share.chapter":"Chapter {index} / {total}","viewer.guided.share.initial":"Chapter 01 / 01","viewer.guided.share.default":"Guided chapter","viewer.guided.state.ready":"Ready","viewer.guided.state.playing":"Playing","viewer.guided.state.settled":"Settled","viewer.guided.state.paused":"Paused","viewer.guided.state.pinned":"Pinned","viewer.guided.state.still":"Still","viewer.guided.share.step":"Step {index} / {total} · {label}","viewer.guided.share.staticMoment":"{step} · Static moment","viewer.guided.share.complete":"{count} steps complete · {note}","viewer.guided.share.settled":"Path settled for reading.","viewer.guided.share.staticPath":"{count} steps · Static path","viewer.guided.share.ready":"{count} steps · Ready","viewer.guided.share.aria":"{state} chapter {index} of {total}: {label}. {beat}. {route}","viewer.guided.beat.start":"Beat {index} / {total} · {label} · starting point","viewer.guided.beat.forward":"Beat {index} / {total} · {from} → {to}","viewer.guided.beat.reverse":"Beat {index} / {total} · {from} → {to} · reverse authored link","viewer.guided.beat.multiple":"Beat {index} / {total} · {from} ⇄ {to} · {count} authored links","viewer.guided.beat.group":"Beat {index} / {total} · {from} · {to} · grouped · no direct link","viewer.guided.beat.aria.prefix":"Story beat {index} of {total}: {label}. ","viewer.guided.beat.aria.start":"Starting point.","viewer.guided.beat.aria.forward":"From {from} through one authored forward relationship.","viewer.guided.beat.aria.reverse":"From {from}; the authored relationship points from {to} to {from}.","viewer.guided.beat.aria.multiple":"From {from} through {count} authored relationships; shown without arbitrary motion.","viewer.guided.beat.aria.group":"Grouped from {from} with no direct authored relationship.","viewer.guided.caption.start":"Starting point","viewer.guided.caption.grouped":"Grouped transition · no direct authored link","viewer.guided.caption.more":" +{count} more","viewer.guided.caption.reverse":"Reverse authored relationship","viewer.guided.caption.relationships":"{count} authored relationships","viewer.guided.caption.relationship":"Authored relationship","viewer.guided.caption.direction":"authored direction: {from} → {to}","viewer.guided.caption.starting":"Authored starting point","viewer.guided.beatLink":"Copy link to current story moment: Beat {index} of {total}: {label}","viewer.guided.noStory":"This diagram has no authored guided story.","viewer.guide.eyebrow":"Diagram guide","viewer.guide.close":"Close diagram guide","viewer.guide.inspecting":"Inspecting compiled semantics","viewer.guide.actions":"Diagram exploration actions","viewer.guide.find":"Find any node","viewer.guide.find.hint":"Search labels, responsibilities, kinds, and stable IDs.","viewer.guide.route":"Trace a route","viewer.guide.route.aria":"Trace a directed route","viewer.guide.route.hint":"Ask how two semantic nodes connect in authored direction.","viewer.guide.map":"See the whole system","viewer.guide.map.hint":"Open Semantic Radar with a live viewport and stable nodes.","viewer.guide.lens":"Compare semantic kinds","viewer.guide.lens.hint":"Count roles, reveal their traffic, and compare direct authored links.","viewer.guide.story":"Play the guided story","viewer.guide.story.hint":"Walk the authored chapters and real relationships.","viewer.guide.present":"Enter Presentation Stage","viewer.guide.present.hint":"Give the live diagram the viewport without changing export.","viewer.guide.shortcuts":"Additional keyboard shortcuts","viewer.guide.shortcut.export":"Export","viewer.guide.shortcut.theme":"Theme","viewer.guide.shortcut.style":"Style","viewer.guide.shortcut.reset":"Reset","viewer.guide.shortcut.zoomIn":"Zoom in","viewer.guide.shortcut.zoomOut":"Zoom out","viewer.guide.shortcut.close":"Close","viewer.guide.facts":"{nodes} · {relationships} · {views}","viewer.guide.fact.node.one":"{count} semantic node","viewer.guide.fact.node.other":"{count} semantic nodes","viewer.guide.fact.relationship.one":"{count} relationship","viewer.guide.fact.relationship.other":"{count} relationships","viewer.guide.fact.view.one":"{count} guided view","viewer.guide.fact.view.other":"{count} guided views","viewer.guide.story.available.one":"Walk {count} authored chapter and its real relationships.","viewer.guide.story.available.other":"Walk {count} authored chapters and their real relationships.","viewer.guide.story.unavailable":"No authored guided story in this diagram.","viewer.guide.open":"Open diagram guide","viewer.guide.noStory":"This diagram has no authored guided story.","viewer.finder.title":"Find a node","viewer.finder.close":"Close node finder","viewer.finder.placeholder":"Search labels or IDs","viewer.finder.search":"Search diagram nodes","viewer.finder.results":"Diagram nodes","viewer.finder.empty":"No matching nodes","viewer.finder.result.focus":"Focus {label}","viewer.finder.result.routeStart":"Choose {label} as route start","viewer.finder.result.routeTarget":"Choose {label} as route destination, {links}","viewer.finder.status.empty":"No matching nodes","viewer.finder.status.count.one":"{count} matching node","viewer.finder.status.count.other":"{count} matching nodes","viewer.finder.noun.nodes":"nodes","viewer.finder.link.one":"{count} link","viewer.finder.link.other":"{count} links","viewer.finder.result.focus.one":"Focus {label}, {count} related connection","viewer.finder.result.focus.other":"Focus {label}, {count} related connections","viewer.finder.status.filtered":"{visible} of {available} {noun}","viewer.finder.status.all":"{available} {noun}","viewer.passport.eyebrow":"Semantic passport","viewer.passport.metadata":"Node metadata","viewer.passport.evidence":"Verified source evidence","viewer.passport.verified":"Verified source","viewer.passport.reach":"Authored reach","viewer.passport.reach.trace":"Trace authored reachability","viewer.passport.upstream":"Upstream","viewer.passport.downstream":"Downstream","viewer.passport.upstream.trace":"Trace upstream authored reachability","viewer.passport.downstream.trace":"Trace downstream authored reachability","viewer.passport.close":"Close semantic passport","viewer.passport.copy":"Copy link","viewer.passport.copy.focus":"Copy link to focused node","viewer.passport.relations":"Relations","viewer.passport.relations.show":"Show connected relationships","viewer.passport.relations.hide":"Hide connected relationships","viewer.passport.relations.list":"Connected relationships","viewer.passport.copyRelation":"Copy relation","viewer.passport.copyNode":"Copy node","viewer.passport.copyPinned":"Copy link to pinned relationship","viewer.passport.copySource":"Copy link to source node","viewer.passport.copy.focused.success":"Focused node link copied","viewer.passport.copy.pinned.success":"Pinned relationship link copied","viewer.passport.copy.focused.failed":"Could not copy focused node link","viewer.passport.copy.pinned.failed":"Could not copy pinned relationship link","viewer.passport.relationship.none":"No connected relationships","viewer.passport.relationship.count.one":"{count} relation","viewer.passport.relationship.count.other":"{count} relations","viewer.passport.relationship.show.one":"Show {count} connected relationship","viewer.passport.relationship.show.other":"Show {count} connected relationships","viewer.passport.relationship.summary":"{out} outgoing · {in} incoming{loops}","viewer.passport.relationship.loops":" · {count} loop","viewer.passport.relationship.explorer":"Direct relationship explorer","viewer.passport.relationship.help":"Use arrow keys to explore relationships. Press Enter or Space to pin details; Escape clears.","viewer.passport.relationship.loopsBack":"loops back","viewer.passport.relationship.connectsTo":"connects to","viewer.passport.relationship.connectsFrom":"connects from","viewer.passport.relationship.pinned":"Pinned relationship · {from} → {to} · {label}","viewer.passport.relationship.inspect":"Inspect relationship {index} of {total}: {from} to {to}, {label}. Press Enter for details.","viewer.passport.relationship.group.out":"Outgoing","viewer.passport.relationship.group.in":"Incoming","viewer.passport.relationship.group.loop":"Self loops","viewer.passport.relationship.row":"{group}: {relationship}, {neighbor}","viewer.passport.relationship.direction.out":"OUT →","viewer.passport.relationship.direction.in":"← IN","viewer.passport.relationship.direction.loop":"LOOP","viewer.passport.sourceCount.one":"{count} verified source reference","viewer.passport.sourceCount.other":"{count} verified source references","viewer.passport.sourceMarker":"SRC","viewer.passport.beacon.one":"{count} verified source; focus this node to inspect","viewer.passport.beacon.other":"{count} verified sources; focus this node to inspect","viewer.passport.repository.open":"Open verified repository revision {revision}","viewer.passport.source.open":"Open verified source {path} at revision {revision}","viewer.passport.source.openLink":"Open ↗","viewer.passport.reach.upstream.one":"Trace {count} upstream authored node","viewer.passport.reach.upstream.other":"Trace {count} upstream authored nodes","viewer.passport.reach.downstream.one":"Trace {count} downstream authored node","viewer.passport.reach.downstream.other":"Trace {count} downstream authored nodes","viewer.passport.reach.noUpstream":"No upstream authored nodes","viewer.passport.reach.noDownstream":"No downstream authored nodes","viewer.passport.reach.status":"{direction} · {nodes} nodes · {links} links · max {hops} hops","viewer.route.eyebrow":"Route probe","viewer.route.start":"Choose a start node","viewer.route.start.find":"Find start","viewer.route.start.find.aria":"Find a route start","viewer.route.copy":"Copy link","viewer.route.copy.aria":"Copy link to traced route","viewer.route.clear":"Clear","viewer.route.clear.aria":"Clear route probe","viewer.route.traced":"Traced route","viewer.route.pickTwo":"Pick two semantic nodes on the diagram","viewer.route.pickOne":"Pick a semantic node on the diagram","viewer.route.controls":"Route journey controls","viewer.route.previous":"Previous route position","viewer.route.play":"Play route journey","viewer.route.pause":"Pause route journey","viewer.route.replay":"Replay route journey","viewer.route.next":"Next route position","viewer.route.journey":"Journey","viewer.route.pause.label":"Pause","viewer.route.replay.label":"Replay","viewer.route.overview":"Overview","viewer.route.overview.aria":"Show complete route overview","viewer.route.instructions":"Choose the source, then the destination. Direction matters.","viewer.route.destination":"Choose a destination from {label}","viewer.route.destination.find":"Find target","viewer.route.destination.find.aria":"Find a reachable route destination","viewer.route.differentDestination":"Choose a different destination","viewer.route.distinct":"A route needs two distinct semantic nodes.","viewer.route.unreachable":"No directed route to {label}","viewer.route.unreachable.detail":"{target} is not reachable from {source}. Pick a highlighted destination.","viewer.route.start.instructions":"Select the source. The next step will reveal only directed destinations.","viewer.route.copy.success":"Traced route link copied","viewer.route.copy.failed":"Could not copy traced route link","viewer.route.position":"Route position {index} of {total}: {label}","viewer.route.step":"Step {index} of {total} · {phase} · {label}","viewer.route.motionRequired":"Automatic journey requires Live motion","viewer.route.trigger.clear":"Clear traced route","viewer.route.overview.status":"{nodes} · {hops} · shortest authored route","viewer.route.overview.node.one":"{count} node","viewer.route.overview.node.other":"{count} nodes","viewer.route.overview.hop.one":"{count} directed hop","viewer.route.overview.hop.other":"{count} directed hops","viewer.route.phase.playing":"Playing","viewer.route.phase.complete":"Complete","viewer.route.phase.inspecting":"Inspecting","viewer.route.destination.count.one":"{count} directed destination available. Pick a highlighted node.","viewer.route.destination.count.other":"{count} directed destinations available. Pick a highlighted node.","viewer.route.noOutgoing":"No outgoing route starts here. Clear and choose another source.","viewer.route.result.title":"{source} to {target}","viewer.route.finder.source.title":"Choose route start","viewer.route.finder.source.placeholder":"Search route sources","viewer.route.finder.source.empty":"No matching route sources","viewer.route.finder.source.results":"Nodes that can start a route","viewer.route.finder.source.noun":"route sources","viewer.route.finder.source.badge":"start","viewer.route.finder.target.title":"Destination from {label}","viewer.route.finder.target.placeholder":"Search reachable destinations","viewer.route.finder.target.empty":"No matching reachable destinations","viewer.route.finder.target.results":"Reachable route destinations","viewer.route.finder.target.noun":"reachable destinations","viewer.route.hop.one":"{count} hop","viewer.route.hop.other":"{count} hops","viewer.lens.eyebrow":"Semantic lens","viewer.lens.title":"Compare system roles","viewer.lens.close":"Close semantic lens","viewer.lens.instruction":"Choose up to two semantic kinds. One reveals its real traffic; two compare only direct authored relationships.","viewer.lens.kinds":"Semantic kinds","viewer.lens.choose":"Choose a kind to inspect its nodes and touching relationships.","viewer.lens.copy":"Copy link to semantic lens","viewer.lens.clear":"Clear semantic lens","viewer.lens.open":"Open semantic lens","viewer.lens.openActive":"Open active semantic lens","viewer.lens.legend":"Semantic legend","viewer.lens.legend.inspect.one":"Inspect {label}, {count} node","viewer.lens.legend.inspect.other":"Inspect {label}, {count} nodes","viewer.lens.kind.count.one":"{label}, {count} node","viewer.lens.kind.count.other":"{label}, {count} nodes","viewer.lens.compare.one":"{first} → {second}: {forward} · {second} → {first}: {reverse} · {count} direct relationship","viewer.lens.compare.other":"{first} → {second}: {forward} · {second} → {first}: {reverse} · {count} direct relationships","viewer.lens.single":"{nodes} · {relationships} · connected peers remain visible","viewer.lens.node.one":"{count} {label} node","viewer.lens.node.other":"{count} {label} nodes","viewer.lens.relationship.one":"{count} touching relationship","viewer.lens.relationship.other":"{count} touching relationships","viewer.radar.title":"Semantic radar","viewer.radar.building":"Building overview","viewer.radar.openFull":"Open full semantic radar","viewer.radar.open":"Open radar","viewer.radar.close":"Close semantic radar","viewer.radar.surface":"Diagram overview. Click a node to focus it, or use arrow keys to pan.","viewer.radar.click":"Click node","viewer.radar.drag":"Drag to pan","viewer.radar.space":"Semantic radar needs more MAP space.","viewer.radar.nodes":"Semantic diagram radar nodes","viewer.radar.focus":"Focus {label} from Semantic Radar","viewer.radar.status":"{count} nodes · {viewport}","viewer.radar.fullMap":"{count} nodes · full map","viewer.radar.compacted":"Radar compacted to avoid covering the Semantic Passport or MAP controls.","viewer.radar.cancelWaiting":"Cancel semantic radar waiting for more MAP space","viewer.radar.needsSpace":"Semantic radar needs more visible MAP space","viewer.radar.viewport.full":"full map","viewer.radar.viewport.width":"{percent}% width","viewer.radar.viewport.scale":"{percent}% viewport","viewer.nav.controls":"Diagram view controls","viewer.nav.route":"Trace a directed route","viewer.nav.route.title":"Trace route (R)","viewer.nav.route.short":"PATH","viewer.nav.radar":"Open semantic radar","viewer.nav.radar.title":"Semantic radar (M)","viewer.nav.radar.short":"MAP","viewer.nav.lens":"Open semantic lens","viewer.nav.lens.title":"Semantic lens (L)","viewer.nav.lens.short":"LENS","viewer.nav.find":"Find a node","viewer.nav.find.title":"Find a node (/)","viewer.nav.guide":"Open diagram guide","viewer.nav.guide.title":"Diagram guide (?)","viewer.nav.zoomOut":"Zoom out","viewer.nav.zoomOut.title":"Zoom out (-)","viewer.nav.reset":"Reset diagram view","viewer.nav.reset.title":"Reset view (0)","viewer.nav.read":"READ","viewer.nav.zoomIn":"Zoom in","viewer.nav.zoomIn.title":"Zoom in (+)","viewer.nav.camera":"{hint}. Reset diagram view","viewer.nav.camera.title":"{semantic}{hint} · reset view (0)","viewer.nav.camera.semantic":"Semantic camera active · ","viewer.nav.level.map":"MAP","viewer.nav.level.read":"READ","viewer.nav.level.full":"FULL","viewer.nav.level.auto":"AUTO","viewer.nav.detail.map":"Zoom in to reveal relationship labels and node context","viewer.nav.detail.read":"Zoom in again to reveal tags and annotations","viewer.nav.detail.full":"Full diagram detail","viewer.intent.summary":"{label}. {out} outgoing, {in} incoming{loops}. {total} connections. Press Enter for details.","viewer.intent.loops":", {count} self loop","viewer.common.copied":"Copied","viewer.common.copyFailed":"Copy failed","viewer.common.copyLink":"Copy link","viewer.common.clear":"Clear","viewer.common.close":"Close"}}</script>
     <div class="guided-views no-print" id="guided-views" hidden aria-label="Guided diagram views">
@@ -5004,7 +5004,7 @@
     <!-- Main Diagram -->
     <div class="diagram-container" data-detail-level="read"
          data-preset-badge-editorial-plate="ARCHIFY / PLATE 04">
-      <svg viewBox="0 0 1046 1054" role="img" lang="en" aria-labelledby="archify-diagram-title archify-diagram-description" data-preset="classic" data-quality-profile="showcase">
+      <svg viewBox="0 0 1141 810" role="img" lang="en" aria-labelledby="archify-diagram-title archify-diagram-description" data-preset="classic" data-quality-profile="showcase">
         <title id="archify-diagram-title">KPI Phân Cấp — Chu Kỳ Tháng, Phòng Dự Án ThuanHai</title>
         <desc id="archify-diagram-description">A workflow diagram generated by Archify.</desc>
         <!-- Definitions -->
@@ -5030,201 +5030,201 @@
         <rect width="100%" height="100%" fill="url(#grid)" />
 
         <!-- Swimlanes -->
-        <rect data-graph-role="structural-frame" data-composition-frame-kind="lane" data-composition-frame-id="lane-0" x="40" y="52" width="978" height="106" rx="10" class="c-lane" stroke-width="1"/>
-        <text x="54" y="74" class="t-dim" font-size="10" font-weight="600">01 / Dữ Liệu Dự Án</text>
+        <rect data-graph-role="structural-frame" data-composition-frame-kind="lane" data-composition-frame-id="lane-0" x="40" y="52" width="1085" height="114" rx="10" class="c-lane" stroke-width="1"/>
+        <text x="54" y="74" class="t-dim" font-size="10" font-weight="600">01 / Bộ Phận PTDA</text>
 
-        <rect data-graph-role="structural-frame" data-composition-frame-kind="lane" data-composition-frame-id="lane-1" x="40" y="178" width="978" height="114" rx="10" class="c-lane" stroke-width="1"/>
-        <text x="54" y="200" class="t-dim" font-size="10" font-weight="600">02 / PM / Cá Nhân</text>
+        <rect data-graph-role="structural-frame" data-composition-frame-kind="lane" data-composition-frame-id="lane-1" x="40" y="186" width="1085" height="114" rx="10" class="c-lane" stroke-width="1"/>
+        <text x="54" y="208" class="t-dim" font-size="10" font-weight="600">02 / Bộ Phận TKDA</text>
 
-        <rect data-graph-role="structural-frame" data-composition-frame-kind="lane" data-composition-frame-id="lane-2" x="40" y="312" width="978" height="106" rx="10" class="c-lane" stroke-width="1"/>
-        <rect data-graph-role="structural-frame" data-composition-frame-kind="exception-lane" data-composition-frame-id="lane-2-exception" x="46" y="318" width="966" height="94" rx="8" class="c-security-group" stroke-width="1"/>
-        <text x="54" y="334" class="t-security" font-size="10" font-weight="600">EX / TBP PTDA</text>
+        <rect data-graph-role="structural-frame" data-composition-frame-kind="lane" data-composition-frame-id="lane-2" x="40" y="320" width="1085" height="106" rx="10" class="c-lane" stroke-width="1"/>
+        <rect data-graph-role="structural-frame" data-composition-frame-kind="exception-lane" data-composition-frame-id="lane-2-exception" x="46" y="326" width="1073" height="94" rx="8" class="c-security-group" stroke-width="1"/>
+        <text x="54" y="342" class="t-security" font-size="10" font-weight="600">EX / Trưởng Phòng</text>
 
-        <rect data-graph-role="structural-frame" data-composition-frame-kind="lane" data-composition-frame-id="lane-3" x="40" y="438" width="978" height="106" rx="10" class="c-lane" stroke-width="1"/>
-        <rect data-graph-role="structural-frame" data-composition-frame-kind="exception-lane" data-composition-frame-id="lane-3-exception" x="46" y="444" width="966" height="94" rx="8" class="c-security-group" stroke-width="1"/>
-        <text x="54" y="460" class="t-security" font-size="10" font-weight="600">EX / TBP TKDA</text>
+        <rect data-graph-role="structural-frame" data-composition-frame-kind="lane" data-composition-frame-id="lane-3" x="40" y="446" width="1085" height="114" rx="10" class="c-lane" stroke-width="1"/>
+        <text x="54" y="468" class="t-dim" font-size="10" font-weight="600">04 / Hệ Thống KPI</text>
 
-        <rect data-graph-role="structural-frame" data-composition-frame-kind="lane" data-composition-frame-id="lane-4" x="40" y="564" width="978" height="106" rx="10" class="c-lane" stroke-width="1"/>
-        <rect data-graph-role="structural-frame" data-composition-frame-kind="exception-lane" data-composition-frame-id="lane-4-exception" x="46" y="570" width="966" height="94" rx="8" class="c-security-group" stroke-width="1"/>
-        <text x="54" y="586" class="t-security" font-size="10" font-weight="600">EX / Trưởng Phòng</text>
-
-        <rect data-graph-role="structural-frame" data-composition-frame-kind="lane" data-composition-frame-id="lane-5" x="40" y="690" width="978" height="114" rx="10" class="c-lane" stroke-width="1"/>
-        <text x="54" y="712" class="t-dim" font-size="10" font-weight="600">06 / Hệ Thống KPI</text>
-
-        <rect data-graph-role="structural-frame" data-composition-frame-kind="lane" data-composition-frame-id="lane-6" x="40" y="824" width="978" height="106" rx="10" class="c-lane" stroke-width="1"/>
-        <text x="54" y="846" class="t-dim" font-size="10" font-weight="600">07 / HRBP</text>
+        <rect data-graph-role="structural-frame" data-composition-frame-kind="lane" data-composition-frame-id="lane-4" x="40" y="580" width="1085" height="106" rx="10" class="c-lane" stroke-width="1"/>
+        <text x="54" y="602" class="t-dim" font-size="10" font-weight="600">05 / HRBP</text>
 
         <!-- Phase headers -->
-        <line x1="68" y1="35" x2="280" y2="35" class="a-default" stroke-width="1.1"/>
-        <rect x="68" y="27" width="212" height="16" rx="4" class="c-mask"/>
-        <text x="174" y="39" class="t-muted" font-size="8" font-weight="600" text-anchor="middle">Đăng Ký Đầu Tháng</text>
-        <line x1="351.19999999999993" y1="35" x2="606.3999999999999" y2="35" class="a-emphasis" stroke-width="1.1"/>
-        <rect x="351.19999999999993" y="27" width="255.2" height="16" rx="4" class="c-mask"/>
-        <text x="478.79999999999995" y="39" class="t-backend" font-size="8" font-weight="600" text-anchor="middle">Duyệt Phân Cấp (AND-join)</text>
-        <line x1="634.4" y1="35" x2="949.4" y2="35" class="a-dashed" stroke-width="1.1"/>
-        <rect x="634.4" y="27" width="315" height="16" rx="4" class="c-mask"/>
-        <text x="791.9" y="39" class="t-messagebus" font-size="8" font-weight="600" text-anchor="middle">Giám Sát + Chốt Cuối Tháng</text>
+        <line x1="118" y1="35" x2="305.2" y2="35" class="a-default" stroke-width="1.1"/>
+        <rect x="118" y="27" width="187.2" height="16" rx="4" class="c-mask"/>
+        <text x="211.6" y="39" class="t-muted" font-size="8" font-weight="600" text-anchor="middle">Đăng Ký Đầu Tháng — Theo Bộ Phận</text>
+        <line x1="378.79999999999995" y1="35" x2="634" y2="35" class="a-emphasis" stroke-width="1.1"/>
+        <rect x="378.79999999999995" y="27" width="255.2" height="16" rx="4" class="c-mask"/>
+        <text x="506.4" y="39" class="t-backend" font-size="8" font-weight="600" text-anchor="middle">Duyệt Phân Cấp (AND-join)</text>
+        <line x1="662" y1="35" x2="1097" y2="35" class="a-dashed" stroke-width="1.1"/>
+        <rect x="662" y="27" width="435" height="16" rx="4" class="c-mask"/>
+        <text x="879.5" y="39" class="t-messagebus" font-size="8" font-weight="600" text-anchor="middle">Giám Sát + Chốt Cuối Tháng</text>
 
         <!-- Workflow groups -->
-        <rect data-graph-role="structural-frame" data-composition-frame-kind="group" data-composition-frame-id="group-0" x="136" y="216" width="196" height="72" rx="9" class="c-lane" stroke-width="1"/>
-        <text x="146" y="214" class="t-messagebus" font-size="7" font-weight="600">Chưa chuẩn hoá SOP-WBS</text>
-        <rect data-graph-role="structural-frame" data-composition-frame-kind="group" data-composition-frame-id="group-1" x="327.2" y="350" width="163.2" height="64" rx="9" class="c-security-group" stroke-width="1"/>
-        <text x="337.2" y="348" class="t-security" font-size="7" font-weight="600">AND-join: cần cả 2 TBP</text>
-        <rect data-graph-role="structural-frame" data-composition-frame-kind="group" data-composition-frame-id="group-2" x="587.4" y="728" width="214.19999999999993" height="72" rx="9" class="c-lane" stroke-width="1"/>
-        <text x="597.4" y="726" class="t-messagebus" font-size="7" font-weight="600">State mới, chưa có trong DB</text>
+        <rect data-graph-role="structural-frame" data-composition-frame-kind="group" data-composition-frame-id="group-0" x="44" y="90" width="240" height="72" rx="9" class="c-lane" stroke-width="1"/>
+        <text x="54" y="88" class="t-messagebus" font-size="7" font-weight="600">Chưa chuẩn hoá trọng số</text>
+        <rect data-graph-role="structural-frame" data-composition-frame-kind="group" data-composition-frame-id="group-1" x="346.8" y="90" width="171.2" height="72" rx="9" class="c-security-group" stroke-width="1"/>
+        <text x="356.8" y="88" class="t-security" font-size="7" font-weight="600">AND-join: cần cả 2 TBP</text>
+        <rect data-graph-role="structural-frame" data-composition-frame-kind="group" data-composition-frame-id="group-2" x="44" y="224" width="240" height="72" rx="9" class="c-lane" stroke-width="1"/>
+        <text x="54" y="222" class="t-messagebus" font-size="7" font-weight="600">Chưa chuẩn hoá trọng số</text>
+        <rect data-graph-role="structural-frame" data-composition-frame-kind="group" data-composition-frame-id="group-3" x="615" y="484" width="214.20000000000005" height="72" rx="9" class="c-lane" stroke-width="1"/>
+        <text x="625" y="482" class="t-messagebus" font-size="7" font-weight="600">State mới, chưa có trong DB</text>
 
         <!-- Edge paths -->
-        <path data-edge-from="truong_phong" data-edge-to="lock_monitor" data-edge-key="0" data-edge-id="final-lockmonitor" data-composition-points="560.4,658;560.4,765;591.4,765" d="M 560.4 658 L 560.4 765 L 591.4 765" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
-        <path data-edge-from="finalize" data-edge-to="hrbp" data-edge-key="1" data-edge-id="finalize-hrbp" data-composition-points="1009.4,765;1030,765;1030,892;969.4,892" d="M 1009.4 765 L 1030 765 L 1030 892 L 969.4 892" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
-        <path data-edge-from="lock_monitor" data-edge-to="finalize" data-edge-label="cuối tháng: đối chiếu kết quả" data-edge-key="2" data-edge-id="lockmonitor-finalize" data-composition-points="680.4,799;680.4,820;896.4,820;896.4,791" d="M 680.4 799 L 680.4 820 L 896.4 820 L 896.4 791" class="a-dashed" stroke-width="1.4" marker-end="url(#arrowhead-dashed)"/>
-        <path data-edge-from="tbp_ptda" data-edge-to="truong_phong" data-edge-label="nhánh 1/2" data-edge-key="3" data-edge-id="ptda-final" data-composition-points="463.2,380;560.4,380;560.4,606" d="M 463.2 380 L 560.4 380 L 560.4 606" class="a-security" stroke-width="1.4" marker-end="url(#arrowhead-security)"/>
-        <path data-edge-from="pm_register" data-edge-to="tbp_ptda" data-edge-label="nộp đăng ký" data-edge-key="4" data-edge-id="register-ptda" data-composition-points="227,287;227,380;331.2,380" d="M 227 287 L 227 380 L 331.2 380" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
-        <path data-edge-from="pm_register" data-edge-to="tbp_tkda" data-edge-key="5" data-edge-id="register-tkda" data-composition-points="234,287;234,560;397.2,560;397.2,532" d="M 234 287 L 234 560 L 397.2 560 L 397.2 532" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
-        <path data-edge-from="tasks_source" data-edge-to="pm_register" data-edge-key="6" data-edge-id="source-register" data-composition-points="114,146;114,168;344,168;344,253;328,253" d="M 114 146 L 114 168 L 344 168 L 344 253 L 328 253" class="a-default" stroke-width="1.4" marker-end="url(#arrowhead)"/>
-        <path data-edge-from="tbp_tkda" data-edge-to="truong_phong" data-edge-label="nhánh 2/2" data-edge-key="7" data-edge-id="tkda-final" data-composition-points="397.2,532;397.2,632;494.4,632" d="M 397.2 532 L 397.2 632 L 494.4 632" class="a-security" stroke-width="1.4" marker-end="url(#arrowhead-security)"/>
+        <path data-edge-from="truong_phong" data-edge-to="lock_monitor" data-edge-key="0" data-edge-id="final-lockmonitor" data-composition-points="588,414;588,521;619,521" d="M 588 414 L 588 521 L 619 521" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
+        <path data-edge-from="finalize" data-edge-to="hrbp" data-edge-key="1" data-edge-id="finalize-hrbp" data-composition-points="1037,521;1051,521;1051,622" d="M 1037 521 L 1051 521 L 1051 622" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
+        <path data-edge-from="lock_monitor" data-edge-to="finalize" data-edge-label="cuối tháng: đối chiếu kết quả" data-edge-key="2" data-edge-id="lockmonitor-finalize" data-composition-points="708,555;708,576;924,576;924,547" d="M 708 555 L 708 576 L 924 576 L 924 547" class="a-dashed" stroke-width="1.4" marker-end="url(#arrowhead-dashed)"/>
+        <path data-edge-from="tbp_ptda" data-edge-to="truong_phong" data-edge-label="nhánh 1/2" data-edge-key="3" data-edge-id="ptda-final" data-composition-points="498.8,127;588,127;588,362" d="M 498.8 127 L 588 127 L 588 362" class="a-security" stroke-width="1.4" marker-end="url(#arrowhead-security)"/>
+        <path data-edge-from="reg_ptda" data-edge-to="tbp_ptda" data-edge-label="nộp đăng ký" data-edge-key="4" data-edge-id="reg_ptda-tbp_ptda" data-composition-points="280,127;350.8,127" d="M 280 127 L 350.8 127" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
+        <path data-edge-from="reg_tkda" data-edge-to="tbp_tkda" data-edge-label="nộp đăng ký" data-edge-key="5" data-edge-id="reg_tkda-tbp_tkda" data-composition-points="280,261;350.8,261" d="M 280 261 L 350.8 261" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
+        <path data-edge-from="tbp_tkda" data-edge-to="truong_phong" data-edge-label="nhánh 2/2" data-edge-key="6" data-edge-id="tkda-final" data-composition-points="424.8,287;424.8,388;514,388" d="M 424.8 287 L 424.8 388 L 514 388" class="a-security" stroke-width="1.4" marker-end="url(#arrowhead-security)"/>
 
         <!-- Nodes -->
-        <g id="node-tasks_source" data-node-id="tasks_source" data-node-label="Tasks / WBS" tabindex="0" role="button" aria-label="Focus Tasks / WBS, plan date + PM phụ trách, Dữ Liệu Dự Án › Đăng Ký Đầu Tháng" aria-pressed="false" data-node-kind="database" data-node-sublabel="plan date + PM phụ trách" data-node-context="Dữ Liệu Dự Án › Đăng Ký Đầu Tháng">
-          <title>Tasks / WBS · plan date + PM phụ trách · Dữ Liệu Dự Án › Đăng Ký Đầu Tháng</title>
-          <rect x="48" y="94" width="132" height="52" rx="6" class="c-mask"/>
-          <rect x="48" y="94" width="132" height="52" rx="6" class="c-database" stroke-width="1.5"/>
-          <g aria-hidden="true" data-semantic-sigil="database" class="semantic-sigil s-database" transform="translate(54 100) scale(0.6875)">
-            <ellipse cx="8" cy="4" rx="5" ry="2"/>
-            <path d="M3 4v8c0 1.1 2.2 2 5 2s5-.9 5-2V4M3 8c0 1.1 2.2 2 5 2s5-.9 5-2"/>
-          </g>
-          <text data-node-label="" data-detail-anchor="" x="114" y="115" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">Tasks / WBS</text>
-          <text data-detail="context" x="114" y="132" class="t-muted" font-size="8" text-anchor="middle">plan date + PM phụ trách</text>
-        </g>
-
-        <g id="node-pm_register" data-node-id="pm_register" data-node-label="PM Đăng Ký + Trọng Số" tabindex="0" role="button" aria-label="Focus PM Đăng Ký + Trọng Số, đầu tháng — tự đặt, chưa chuẩn SOP-WBS, PM / Cá Nhân › Chưa chuẩn hoá SOP-WBS › Đăng Ký Đầu Tháng" aria-pressed="false" data-node-kind="frontend" data-node-sublabel="đầu tháng — tự đặt, chưa chuẩn SOP-WBS" data-node-tag="câu hỏi 3 còn mở" data-node-context="PM / Cá Nhân › Chưa chuẩn hoá SOP-WBS › Đăng Ký Đầu Tháng">
-          <title>PM Đăng Ký + Trọng Số · đầu tháng — tự đặt, chưa chuẩn SOP-WBS · PM / Cá Nhân › Chưa chuẩn hoá SOP-WBS › Đăng Ký Đầu Tháng · câu hỏi 3 còn mở</title>
-          <rect x="140" y="219" width="188" height="68" rx="6" class="c-mask"/>
-          <rect x="140" y="219" width="188" height="68" rx="6" class="c-frontend" stroke-width="1.5"/>
-          <g aria-hidden="true" data-semantic-sigil="frontend" class="semantic-sigil s-frontend" transform="translate(146 225) scale(0.6875)">
+        <g id="node-reg_ptda" data-node-id="reg_ptda" data-node-label="CV/NV PTDA Đăng Ký" tabindex="0" role="button" aria-label="Focus CV/NV PTDA Đăng Ký, nguồn: request/survey/scenario, Bộ Phận PTDA › Chưa chuẩn hoá trọng số › Đăng Ký Đầu Tháng — Theo Bộ Phận" aria-pressed="false" data-node-kind="frontend" data-node-sublabel="nguồn: request/survey/scenario" data-node-tag="trọng số còn mở" data-node-context="Bộ Phận PTDA › Chưa chuẩn hoá trọng số › Đăng Ký Đầu Tháng — Theo Bộ Phận">
+          <title>CV/NV PTDA Đăng Ký · nguồn: request/survey/scenario · Bộ Phận PTDA › Chưa chuẩn hoá trọng số › Đăng Ký Đầu Tháng — Theo Bộ Phận · trọng số còn mở</title>
+          <rect x="48" y="93" width="232" height="68" rx="6" class="c-mask"/>
+          <rect x="48" y="93" width="232" height="68" rx="6" class="c-frontend" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="frontend" class="semantic-sigil s-frontend" transform="translate(54 99) scale(0.6875)">
             <rect x="2" y="3" width="12" height="10" rx="2"/>
             <path d="M2 6.5h12"/>
             <circle cx="4.1" cy="4.8" r=".7" class="sigil-fill"/>
             <circle cx="6.3" cy="4.8" r=".7" class="sigil-fill"/>
           </g>
-          <text data-node-label="" data-detail-anchor="" x="234" y="240" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">PM Đăng Ký + Trọng Số</text>
-          <text data-detail="context" x="234" y="257" class="t-muted" font-size="7.8" text-anchor="middle">đầu tháng — tự đặt, chưa chuẩn SOP-WBS</text>
-        <text data-detail="fine" x="234" y="275" class="t-frontend" font-size="7" text-anchor="middle">câu hỏi 3 còn mở</text>
+          <text data-node-label="" data-detail-anchor="" x="164" y="114" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">CV/NV PTDA Đăng Ký</text>
+          <text data-detail="context" x="164" y="131" class="t-muted" font-size="8" text-anchor="middle">nguồn: request/survey/scenario</text>
+        <text data-detail="fine" x="164" y="149" class="t-frontend" font-size="7" text-anchor="middle">trọng số còn mở</text>
         </g>
 
-        <g id="node-tbp_ptda" data-node-id="tbp_ptda" data-node-label="TBP PTDA Duyệt" tabindex="0" role="button" aria-label="Focus TBP PTDA Duyệt, TBP PTDA › AND-join: cần cả 2 TBP › Duyệt Phân Cấp (AND-join)" aria-pressed="false" data-node-kind="security" data-node-context="TBP PTDA › AND-join: cần cả 2 TBP › Duyệt Phân Cấp (AND-join)">
-          <title>TBP PTDA Duyệt · TBP PTDA › AND-join: cần cả 2 TBP › Duyệt Phân Cấp (AND-join)</title>
-          <rect x="331.2" y="354" width="132" height="52" rx="6" class="c-mask"/>
-          <rect x="331.2" y="354" width="132" height="52" rx="6" class="c-security" stroke-width="1.5"/>
-          <g aria-hidden="true" data-semantic-sigil="security" class="semantic-sigil s-security" transform="translate(337.2 360) scale(0.6875)">
+        <g id="node-tbp_ptda" data-node-id="tbp_ptda" data-node-label="TBP PTDA Duyệt" tabindex="0" role="button" aria-label="Focus TBP PTDA Duyệt, duyệt đúng nguồn PTDA, Bộ Phận PTDA › AND-join: cần cả 2 TBP › Duyệt Phân Cấp (AND-join)" aria-pressed="false" data-node-kind="security" data-node-sublabel="duyệt đúng nguồn PTDA" data-node-context="Bộ Phận PTDA › AND-join: cần cả 2 TBP › Duyệt Phân Cấp (AND-join)">
+          <title>TBP PTDA Duyệt · duyệt đúng nguồn PTDA · Bộ Phận PTDA › AND-join: cần cả 2 TBP › Duyệt Phân Cấp (AND-join)</title>
+          <rect x="350.8" y="101" width="148" height="52" rx="6" class="c-mask"/>
+          <rect x="350.8" y="101" width="148" height="52" rx="6" class="c-security" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="security" class="semantic-sigil s-security" transform="translate(356.8 107) scale(0.6875)">
             <path d="M8 2.2 13 4v3.5c0 3.1-1.8 5.4-5 6.5-3.2-1.1-5-3.4-5-6.5V4Z"/>
             <path d="m5.8 8 1.5 1.5 3-3"/>
           </g>
-          <text data-node-label="" x="397.2" y="375" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">TBP PTDA Duyệt</text>
+          <text data-node-label="" data-detail-anchor="" x="424.8" y="122" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">TBP PTDA Duyệt</text>
+          <text data-detail="context" x="424.8" y="139" class="t-muted" font-size="8" text-anchor="middle">duyệt đúng nguồn PTDA</text>
         </g>
 
-        <g id="node-tbp_tkda" data-node-id="tbp_tkda" data-node-label="TBP TKDA Duyệt" tabindex="0" role="button" aria-label="Focus TBP TKDA Duyệt, TBP TKDA › Duyệt Phân Cấp (AND-join)" aria-pressed="false" data-node-kind="security" data-node-context="TBP TKDA › Duyệt Phân Cấp (AND-join)">
-          <title>TBP TKDA Duyệt · TBP TKDA › Duyệt Phân Cấp (AND-join)</title>
-          <rect x="331.2" y="480" width="132" height="52" rx="6" class="c-mask"/>
-          <rect x="331.2" y="480" width="132" height="52" rx="6" class="c-security" stroke-width="1.5"/>
-          <g aria-hidden="true" data-semantic-sigil="security" class="semantic-sigil s-security" transform="translate(337.2 486) scale(0.6875)">
+        <g id="node-reg_tkda" data-node-id="reg_tkda" data-node-label="PM TKDA Đăng Ký" tabindex="0" role="button" aria-label="Focus PM TKDA Đăng Ký, nguồn: tasks + tiến độ dự án, Bộ Phận TKDA › Chưa chuẩn hoá trọng số › Đăng Ký Đầu Tháng — Theo Bộ Phận" aria-pressed="false" data-node-kind="frontend" data-node-sublabel="nguồn: tasks + tiến độ dự án" data-node-tag="trọng số còn mở" data-node-context="Bộ Phận TKDA › Chưa chuẩn hoá trọng số › Đăng Ký Đầu Tháng — Theo Bộ Phận">
+          <title>PM TKDA Đăng Ký · nguồn: tasks + tiến độ dự án · Bộ Phận TKDA › Chưa chuẩn hoá trọng số › Đăng Ký Đầu Tháng — Theo Bộ Phận · trọng số còn mở</title>
+          <rect x="48" y="227" width="232" height="68" rx="6" class="c-mask"/>
+          <rect x="48" y="227" width="232" height="68" rx="6" class="c-frontend" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="frontend" class="semantic-sigil s-frontend" transform="translate(54 233) scale(0.6875)">
+            <rect x="2" y="3" width="12" height="10" rx="2"/>
+            <path d="M2 6.5h12"/>
+            <circle cx="4.1" cy="4.8" r=".7" class="sigil-fill"/>
+            <circle cx="6.3" cy="4.8" r=".7" class="sigil-fill"/>
+          </g>
+          <text data-node-label="" data-detail-anchor="" x="164" y="248" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">PM TKDA Đăng Ký</text>
+          <text data-detail="context" x="164" y="265" class="t-muted" font-size="8" text-anchor="middle">nguồn: tasks + tiến độ dự án</text>
+        <text data-detail="fine" x="164" y="283" class="t-frontend" font-size="7" text-anchor="middle">trọng số còn mở</text>
+        </g>
+
+        <g id="node-tbp_tkda" data-node-id="tbp_tkda" data-node-label="TBP TKDA Duyệt" tabindex="0" role="button" aria-label="Focus TBP TKDA Duyệt, duyệt đúng nguồn TKDA, Bộ Phận TKDA › Duyệt Phân Cấp (AND-join)" aria-pressed="false" data-node-kind="security" data-node-sublabel="duyệt đúng nguồn TKDA" data-node-context="Bộ Phận TKDA › Duyệt Phân Cấp (AND-join)">
+          <title>TBP TKDA Duyệt · duyệt đúng nguồn TKDA · Bộ Phận TKDA › Duyệt Phân Cấp (AND-join)</title>
+          <rect x="350.8" y="235" width="148" height="52" rx="6" class="c-mask"/>
+          <rect x="350.8" y="235" width="148" height="52" rx="6" class="c-security" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="security" class="semantic-sigil s-security" transform="translate(356.8 241) scale(0.6875)">
             <path d="M8 2.2 13 4v3.5c0 3.1-1.8 5.4-5 6.5-3.2-1.1-5-3.4-5-6.5V4Z"/>
             <path d="m5.8 8 1.5 1.5 3-3"/>
           </g>
-          <text data-node-label="" x="397.2" y="501" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">TBP TKDA Duyệt</text>
+          <text data-node-label="" data-detail-anchor="" x="424.8" y="256" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">TBP TKDA Duyệt</text>
+          <text data-detail="context" x="424.8" y="273" class="t-muted" font-size="8" text-anchor="middle">duyệt đúng nguồn TKDA</text>
         </g>
 
         <g id="node-truong_phong" data-node-id="truong_phong" data-node-label="Trưởng Phòng Duyệt" tabindex="0" role="button" aria-label="Focus Trưởng Phòng Duyệt, sau khi cả 2 TBP xong, Trưởng Phòng › Duyệt Phân Cấp (AND-join)" aria-pressed="false" data-node-kind="security" data-node-sublabel="sau khi cả 2 TBP xong" data-node-context="Trưởng Phòng › Duyệt Phân Cấp (AND-join)">
           <title>Trưởng Phòng Duyệt · sau khi cả 2 TBP xong · Trưởng Phòng › Duyệt Phân Cấp (AND-join)</title>
-          <rect x="494.4" y="606" width="132" height="52" rx="6" class="c-mask"/>
-          <rect x="494.4" y="606" width="132" height="52" rx="6" class="c-security" stroke-width="1.5"/>
-          <g aria-hidden="true" data-semantic-sigil="security" class="semantic-sigil s-security" transform="translate(500.4 612) scale(0.6875)">
+          <rect x="514" y="362" width="148" height="52" rx="6" class="c-mask"/>
+          <rect x="514" y="362" width="148" height="52" rx="6" class="c-security" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="security" class="semantic-sigil s-security" transform="translate(520 368) scale(0.6875)">
             <path d="M8 2.2 13 4v3.5c0 3.1-1.8 5.4-5 6.5-3.2-1.1-5-3.4-5-6.5V4Z"/>
             <path d="m5.8 8 1.5 1.5 3-3"/>
           </g>
-          <text data-node-label="" data-detail-anchor="" x="560.4" y="627" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">Trưởng Phòng Duyệt</text>
-          <text data-detail="context" x="560.4" y="644" class="t-muted" font-size="8" text-anchor="middle">sau khi cả 2 TBP xong</text>
+          <text data-node-label="" data-detail-anchor="" x="588" y="383" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">Trưởng Phòng Duyệt</text>
+          <text data-detail="context" x="588" y="400" class="t-muted" font-size="8" text-anchor="middle">sau khi cả 2 TBP xong</text>
         </g>
 
         <g id="node-lock_monitor" data-node-id="lock_monitor" data-node-label="Khoá Mục Tiêu + Giám Sát" tabindex="0" role="button" aria-label="Focus Khoá Mục Tiêu + Giám Sát, giữa tháng: xem — không sửa, Hệ Thống KPI › State mới, chưa có trong DB › Giám Sát + Chốt Cuối Tháng" aria-pressed="false" data-node-kind="database" data-node-sublabel="giữa tháng: xem — không sửa" data-node-tag="trạng thái mới" data-node-context="Hệ Thống KPI › State mới, chưa có trong DB › Giám Sát + Chốt Cuối Tháng">
           <title>Khoá Mục Tiêu + Giám Sát · giữa tháng: xem — không sửa · Hệ Thống KPI › State mới, chưa có trong DB › Giám Sát + Chốt Cuối Tháng · trạng thái mới</title>
-          <rect x="591.4" y="731" width="178" height="68" rx="6" class="c-mask"/>
-          <rect x="591.4" y="731" width="178" height="68" rx="6" class="c-database" stroke-width="1.5"/>
-          <g aria-hidden="true" data-semantic-sigil="database" class="semantic-sigil s-database" transform="translate(597.4 737) scale(0.6875)">
+          <rect x="619" y="487" width="178" height="68" rx="6" class="c-mask"/>
+          <rect x="619" y="487" width="178" height="68" rx="6" class="c-database" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="database" class="semantic-sigil s-database" transform="translate(625 493) scale(0.6875)">
             <ellipse cx="8" cy="4" rx="5" ry="2"/>
             <path d="M3 4v8c0 1.1 2.2 2 5 2s5-.9 5-2V4M3 8c0 1.1 2.2 2 5 2s5-.9 5-2"/>
           </g>
-          <text data-node-label="" data-detail-anchor="" x="680.4" y="752" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">Khoá Mục Tiêu + Giám Sát</text>
-          <text data-detail="context" x="680.4" y="769" class="t-muted" font-size="8" text-anchor="middle">giữa tháng: xem — không sửa</text>
-        <text data-detail="fine" x="680.4" y="787" class="t-database" font-size="7" text-anchor="middle">trạng thái mới</text>
+          <text data-node-label="" data-detail-anchor="" x="708" y="508" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">Khoá Mục Tiêu + Giám Sát</text>
+          <text data-detail="context" x="708" y="525" class="t-muted" font-size="8" text-anchor="middle">giữa tháng: xem — không sửa</text>
+        <text data-detail="fine" x="708" y="543" class="t-database" font-size="7" text-anchor="middle">trạng thái mới</text>
         </g>
 
         <g id="node-finalize" data-node-id="finalize" data-node-label="Đối Chiếu + Khoá + Xuất Excel" tabindex="0" role="button" aria-label="Focus Đối Chiếu + Khoá + Xuất Excel, cuối tháng, sau duyệt lại 3 cấp, Hệ Thống KPI › Giám Sát + Chốt Cuối Tháng" aria-pressed="false" data-node-kind="backend" data-node-sublabel="cuối tháng, sau duyệt lại 3 cấp" data-node-context="Hệ Thống KPI › Giám Sát + Chốt Cuối Tháng">
           <title>Đối Chiếu + Khoá + Xuất Excel · cuối tháng, sau duyệt lại 3 cấp · Hệ Thống KPI › Giám Sát + Chốt Cuối Tháng</title>
-          <rect x="797.4" y="739" width="212" height="52" rx="6" class="c-mask"/>
-          <rect x="797.4" y="739" width="212" height="52" rx="6" class="c-backend" stroke-width="1.5"/>
-          <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(803.4 745) scale(0.6875)">
+          <rect x="825" y="495" width="212" height="52" rx="6" class="c-mask"/>
+          <rect x="825" y="495" width="212" height="52" rx="6" class="c-backend" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(831 501) scale(0.6875)">
             <path d="M6 3 3 8l3 5M10 3l3 5-3 5"/>
           </g>
-          <text data-node-label="" data-detail-anchor="" x="903.4" y="760" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">Đối Chiếu + Khoá + Xuất Excel</text>
-          <text data-detail="context" x="903.4" y="777" class="t-muted" font-size="8" text-anchor="middle">cuối tháng, sau duyệt lại 3 cấp</text>
+          <text data-node-label="" data-detail-anchor="" x="931" y="516" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">Đối Chiếu + Khoá + Xuất Excel</text>
+          <text data-detail="context" x="931" y="533" class="t-muted" font-size="8" text-anchor="middle">cuối tháng, sau duyệt lại 3 cấp</text>
         </g>
 
         <g id="node-hrbp" data-node-id="hrbp" data-node-label="HRBP" tabindex="0" role="button" aria-label="Focus HRBP, route /kpi riêng, RBAC, HRBP › Giám Sát + Chốt Cuối Tháng" aria-pressed="false" data-node-kind="external" data-node-sublabel="route /kpi riêng, RBAC" data-node-context="HRBP › Giám Sát + Chốt Cuối Tháng">
           <title>HRBP · route /kpi riêng, RBAC · HRBP › Giám Sát + Chốt Cuối Tháng</title>
-          <rect x="837.4" y="866" width="132" height="52" rx="6" class="c-mask"/>
-          <rect x="837.4" y="866" width="132" height="52" rx="6" class="c-external" stroke-width="1.5"/>
-          <g aria-hidden="true" data-semantic-sigil="external" class="semantic-sigil s-external" transform="translate(843.4 872) scale(0.6875)">
+          <rect x="985" y="622" width="132" height="52" rx="6" class="c-mask"/>
+          <rect x="985" y="622" width="132" height="52" rx="6" class="c-external" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="external" class="semantic-sigil s-external" transform="translate(991 628) scale(0.6875)">
             <rect x="2.5" y="5" width="8.5" height="8" rx="1.5"/>
             <path d="M8 2.5h5.5V8M13.5 2.5 7.5 8.5"/>
           </g>
-          <text data-node-label="" data-detail-anchor="" x="903.4" y="887" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">HRBP</text>
-          <text data-detail="context" x="903.4" y="904" class="t-muted" font-size="8" text-anchor="middle">route /kpi riêng, RBAC</text>
+          <text data-node-label="" data-detail-anchor="" x="1051" y="643" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">HRBP</text>
+          <text data-detail="context" x="1051" y="660" class="t-muted" font-size="8" text-anchor="middle">route /kpi riêng, RBAC</text>
         </g>
 
         <!-- Edge labels -->
 
 
         <g data-detail="context" data-edge-from="lock_monitor" data-edge-to="finalize" data-edge-label="cuối tháng: đối chiếu kết quả" data-edge-key="2" data-edge-id="lockmonitor-finalize">
-          <rect x="713.8" y="800" width="149.2" height="14" rx="3" class="c-mask"/>
-          <text x="788.4" y="810" class="t-database" font-size="8" text-anchor="middle">cuối tháng: đối chiếu kết quả</text>
+          <rect x="741.4" y="556" width="149.2" height="14" rx="3" class="c-mask"/>
+          <text x="816" y="566" class="t-database" font-size="8" text-anchor="middle">cuối tháng: đối chiếu kết quả</text>
         </g>
         <g data-detail="context" data-edge-from="tbp_ptda" data-edge-to="truong_phong" data-edge-label="nhánh 1/2" data-edge-key="3" data-edge-id="ptda-final">
-          <rect x="485.19999999999993" y="360" width="53.199999999999996" height="14" rx="3" class="c-mask"/>
-          <text x="511.79999999999995" y="370" class="t-security" font-size="8" text-anchor="middle">nhánh 1/2</text>
+          <rect x="516.8" y="107" width="53.199999999999996" height="14" rx="3" class="c-mask"/>
+          <text x="543.4" y="117" class="t-security" font-size="8" text-anchor="middle">nhánh 1/2</text>
         </g>
-        <g data-detail="context" data-edge-from="pm_register" data-edge-to="tbp_ptda" data-edge-label="nộp đăng ký" data-edge-key="4" data-edge-id="register-ptda">
-          <rect x="247.70000000000002" y="360" width="62.8" height="14" rx="3" class="c-mask"/>
-          <text x="279.1" y="370" class="t-backend" font-size="8" text-anchor="middle">nộp đăng ký</text>
+        <g data-detail="context" data-edge-from="reg_ptda" data-edge-to="tbp_ptda" data-edge-label="nộp đăng ký" data-edge-key="4" data-edge-id="reg_ptda-tbp_ptda">
+          <rect x="284" y="107" width="62.8" height="14" rx="3" class="c-mask"/>
+          <text x="315.4" y="117" class="t-backend" font-size="8" text-anchor="middle">nộp đăng ký</text>
         </g>
-
-
-        <g data-detail="context" data-edge-from="tbp_tkda" data-edge-to="truong_phong" data-edge-label="nhánh 2/2" data-edge-key="7" data-edge-id="tkda-final">
-          <rect x="419.19999999999993" y="612" width="53.199999999999996" height="14" rx="3" class="c-mask"/>
-          <text x="445.79999999999995" y="622" class="t-security" font-size="8" text-anchor="middle">nhánh 2/2</text>
+        <g data-detail="context" data-edge-from="reg_tkda" data-edge-to="tbp_tkda" data-edge-label="nộp đăng ký" data-edge-key="5" data-edge-id="reg_tkda-tbp_tkda">
+          <rect x="284" y="241" width="62.8" height="14" rx="3" class="c-mask"/>
+          <text x="315.4" y="251" class="t-backend" font-size="8" text-anchor="middle">nộp đăng ký</text>
+        </g>
+        <g data-detail="context" data-edge-from="tbp_tkda" data-edge-to="truong_phong" data-edge-label="nhánh 2/2" data-edge-key="6" data-edge-id="tkda-final">
+          <rect x="442.79999999999995" y="368" width="53.199999999999996" height="14" rx="3" class="c-mask"/>
+          <text x="469.4" y="378" class="t-security" font-size="8" text-anchor="middle">nhánh 2/2</text>
         </g>
 
         <!-- Legend -->
         <g data-legend="" data-legend-bridge="">
-          <text x="20" y="954" class="t-primary" font-size="12" font-weight="650">Legend</text>
-          <g data-legend-semantic-kind="frontend" data-legend-kind="frontend" data-legend-label="User UI" data-legend-x="20" data-legend-baseline="974" data-legend-width="74">
-            <rect x="20" y="966" width="14" height="9" rx="2" class="c-frontend" stroke-width="1"/>
-            <text x="42" y="974" class="t-muted" font-size="7.5" font-weight="500">User UI</text>
+          <text x="20" y="710" class="t-primary" font-size="12" font-weight="650">Legend</text>
+          <g data-legend-semantic-kind="frontend" data-legend-kind="frontend" data-legend-label="User UI" data-legend-x="20" data-legend-baseline="730" data-legend-width="74">
+            <rect x="20" y="722" width="14" height="9" rx="2" class="c-frontend" stroke-width="1"/>
+            <text x="42" y="730" class="t-muted" font-size="7.5" font-weight="500">User UI</text>
           </g>
-          <g data-legend-semantic-kind="backend" data-legend-kind="backend" data-legend-label="Agent logic" data-legend-x="101" data-legend-baseline="974" data-legend-width="91">
-            <rect x="101" y="966" width="14" height="9" rx="2" class="c-backend" stroke-width="1"/>
-            <text x="123" y="974" class="t-muted" font-size="7.5" font-weight="500">Agent logic</text>
+          <g data-legend-semantic-kind="backend" data-legend-kind="backend" data-legend-label="Agent logic" data-legend-x="101" data-legend-baseline="730" data-legend-width="91">
+            <rect x="101" y="722" width="14" height="9" rx="2" class="c-backend" stroke-width="1"/>
+            <text x="123" y="730" class="t-muted" font-size="7.5" font-weight="500">Agent logic</text>
           </g>
-          <g data-legend-semantic-kind="security" data-legend-kind="security" data-legend-label="Policy" data-legend-x="199" data-legend-baseline="974" data-legend-width="70">
-            <rect x="199" y="966" width="14" height="9" rx="2" class="c-security" stroke-width="1"/>
-            <text x="221" y="974" class="t-muted" font-size="7.5" font-weight="500">Policy</text>
+          <g data-legend-semantic-kind="security" data-legend-kind="security" data-legend-label="Policy" data-legend-x="199" data-legend-baseline="730" data-legend-width="70">
+            <rect x="199" y="722" width="14" height="9" rx="2" class="c-security" stroke-width="1"/>
+            <text x="221" y="730" class="t-muted" font-size="7.5" font-weight="500">Policy</text>
           </g>
-          <g data-legend-semantic-kind="database" data-legend-kind="database" data-legend-label="Context / trace" data-legend-x="276" data-legend-baseline="974" data-legend-width="109">
-            <rect x="276" y="966" width="14" height="9" rx="2" class="c-database" stroke-width="1"/>
-            <text x="298" y="974" class="t-muted" font-size="7.5" font-weight="500">Context / trace</text>
+          <g data-legend-semantic-kind="database" data-legend-kind="database" data-legend-label="Context / trace" data-legend-x="276" data-legend-baseline="730" data-legend-width="109">
+            <rect x="276" y="722" width="14" height="9" rx="2" class="c-database" stroke-width="1"/>
+            <text x="298" y="730" class="t-muted" font-size="7.5" font-weight="500">Context / trace</text>
           </g>
-          <g data-legend-semantic-kind="external" data-legend-kind="external" data-legend-label="External system" data-legend-x="392" data-legend-baseline="974" data-legend-width="109">
-            <rect x="392" y="966" width="14" height="9" rx="2" class="c-external" stroke-width="1"/>
-            <text x="414" y="974" class="t-muted" font-size="7.5" font-weight="500">External system</text>
+          <g data-legend-semantic-kind="external" data-legend-kind="external" data-legend-label="External system" data-legend-x="392" data-legend-baseline="730" data-legend-width="109">
+            <rect x="392" y="722" width="14" height="9" rx="2" class="c-external" stroke-width="1"/>
+            <text x="414" y="730" class="t-muted" font-size="7.5" font-weight="500">External system</text>
           </g>
         </g>
       </svg>
@@ -5421,6 +5421,7 @@
         <ul>
           <li>&bull; Cascade model = decompose: trọng số giao trước khi biết actual date</li>
           <li>&bull; Cơ cấu Phòng Dự Án = 2 bộ phận (PTDA, TKDA), không phải 4</li>
+          <li>&bull; PTDA đăng ký từ project_requests/survey_reports/scenario_baselines (SOP_PTDA); TKDA đăng ký từ tasks + progress_items dự án lớn</li>
           <li>&bull; Route /kpi tách riêng khỏi PMODashboard.tsx, RBAC theo route + RLS</li>
         </ul>
       </div>
@@ -5434,6 +5435,7 @@
           <li>&bull; Trọng số tự đặt chủ quan — vi phạm &#39;bằng chứng độc lập&#39; (Nguyên tắc 2)</li>
           <li>&bull; Trạng thái &#39;giám sát giữa tháng, không sửa&#39; chưa có trong kpi_reports.status</li>
           <li>&bull; Schema evidence cho Excel, audit auto_source, role HRBP chưa tồn tại</li>
+          <li>&bull; PTDA còn 12 mục Pending Drill trong SOP_PTDA_V1 (SLA, technical validation, reconcile...) — chưa đủ rõ để làm KPI item chi tiết</li>
         </ul>
       </div>
     </div>
