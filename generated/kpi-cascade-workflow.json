@@ -1,0 +1,88 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "KPI Phân Cấp — Chu Kỳ Tháng, Phòng Dự Án ThuanHai",
+    "quality_profile": "showcase",
+    "views": [
+      {
+        "id": "happy-path",
+        "label": "Đăng ký đến giao HRBP",
+        "focus": ["tasks_source", "pm_register", "tbp_ptda", "truong_phong", "lock_monitor", "finalize", "hrbp"],
+        "note": "Toàn bộ chu kỳ 1 tháng: từ dữ liệu Tasks/WBS đến khi HRBP nhận báo cáo."
+      },
+      {
+        "id": "and-join",
+        "label": "AND-join duyệt phân cấp",
+        "focus": ["pm_register", "tbp_ptda", "tbp_tkda", "truong_phong"],
+        "note": "Trưởng Phòng chỉ duyệt sau khi CẢ 2 Trưởng Bộ Phận (PTDA và TKDA) đã duyệt xong."
+      },
+      {
+        "id": "open-risk",
+        "label": "2 điểm còn mở (chưa chốt)",
+        "focus": ["pm_register", "lock_monitor"],
+        "note": "Trọng số tự đặt chưa chuẩn hoá SOP-WBS; trạng thái giám sát giữa tháng chưa có trong schema kpi_reports hiện tại."
+      }
+    ]
+  },
+  "lanes": [
+    { "id": "source", "label": "Dữ Liệu Dự Án" },
+    { "id": "individual", "label": "PM / Cá Nhân" },
+    { "id": "approval_ptda", "label": "TBP PTDA", "variant": "exception" },
+    { "id": "approval_tkda", "label": "TBP TKDA", "variant": "exception" },
+    { "id": "approval_final", "label": "Trưởng Phòng", "variant": "exception" },
+    { "id": "system", "label": "Hệ Thống KPI" },
+    { "id": "hr", "label": "HRBP" }
+  ],
+  "phases": [
+    { "id": "dangky", "label": "Đăng Ký Đầu Tháng", "fromCol": 0, "toCol": 1 },
+    { "id": "duyet", "label": "Duyệt Phân Cấp (AND-join)", "fromCol": 2, "toCol": 3, "variant": "emphasis" },
+    { "id": "vanhanh", "label": "Giám Sát + Chốt Cuối Tháng", "fromCol": 4, "toCol": 5, "variant": "dashed" }
+  ],
+  "groups": [
+    { "id": "and_join_group", "label": "AND-join: cần cả 2 TBP", "lane": "approval_ptda", "fromCol": 2, "toCol": 2, "variant": "security" },
+    { "id": "open_risk_weight", "label": "Chưa chuẩn hoá SOP-WBS", "lane": "individual", "fromCol": 1, "toCol": 1, "variant": "dashed" },
+    { "id": "open_risk_monitor", "label": "State mới, chưa có trong DB", "lane": "system", "fromCol": 4, "toCol": 4, "variant": "dashed" }
+  ],
+  "mainPath": ["tasks_source", "pm_register", "tbp_ptda", "truong_phong", "lock_monitor", "finalize", "hrbp"],
+  "nodes": [
+    { "id": "tasks_source", "lane": "source", "col": 0, "type": "database", "label": "Tasks / WBS", "sublabel": "plan date + PM phụ trách", "width": 132 },
+    { "id": "pm_register", "lane": "individual", "col": 1, "type": "frontend", "label": "PM Đăng Ký + Trọng Số", "sublabel": "đầu tháng — tự đặt, chưa chuẩn SOP-WBS", "tag": "câu hỏi 3 còn mở", "width": 188 },
+    { "id": "tbp_ptda", "lane": "approval_ptda", "col": 2, "type": "security", "label": "TBP PTDA Duyệt", "width": 132 },
+    { "id": "tbp_tkda", "lane": "approval_tkda", "col": 2, "type": "security", "label": "TBP TKDA Duyệt", "width": 132 },
+    { "id": "truong_phong", "lane": "approval_final", "col": 3, "type": "security", "label": "Trưởng Phòng Duyệt", "sublabel": "sau khi cả 2 TBP xong", "width": 132 },
+    { "id": "lock_monitor", "lane": "system", "col": 4, "type": "database", "label": "Khoá Mục Tiêu + Giám Sát", "sublabel": "giữa tháng: xem — không sửa", "tag": "trạng thái mới", "width": 178 },
+    { "id": "finalize", "lane": "system", "col": 5, "type": "backend", "label": "Đối Chiếu + Khoá + Xuất Excel", "sublabel": "cuối tháng, sau duyệt lại 3 cấp", "width": 212 },
+    { "id": "hrbp", "lane": "hr", "col": 5, "type": "external", "label": "HRBP", "sublabel": "route /kpi riêng, RBAC", "width": 132 }
+  ],
+  "edges": [
+    { "id": "source-register", "from": "tasks_source", "to": "pm_register", "variant": "default" },
+    { "id": "register-ptda", "from": "pm_register", "to": "tbp_ptda", "label": "nộp đăng ký", "variant": "emphasis" },
+    { "id": "register-tkda", "from": "pm_register", "to": "tbp_tkda", "variant": "emphasis" },
+    { "id": "ptda-final", "from": "tbp_ptda", "to": "truong_phong", "label": "nhánh 1/2", "variant": "security" },
+    { "id": "tkda-final", "from": "tbp_tkda", "to": "truong_phong", "label": "nhánh 2/2", "variant": "security" },
+    { "id": "final-lockmonitor", "from": "truong_phong", "to": "lock_monitor", "variant": "emphasis" },
+    { "id": "lockmonitor-finalize", "from": "lock_monitor", "to": "finalize", "label": "cuối tháng: đối chiếu kết quả", "variant": "dashed" },
+    { "id": "finalize-hrbp", "from": "finalize", "to": "hrbp", "variant": "emphasis" }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "Đã chốt qua Socratic drill (07/09/2026)",
+      "items": [
+        "Cascade model = decompose: trọng số giao trước khi biết actual date",
+        "Cơ cấu Phòng Dự Án = 2 bộ phận (PTDA, TKDA), không phải 4",
+        "Route /kpi tách riêng khỏi PMODashboard.tsx, RBAC theo route + RLS"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "Còn mở — chưa chốt",
+      "items": [
+        "Trọng số tự đặt chủ quan — vi phạm 'bằng chứng độc lập' (Nguyên tắc 2)",
+        "Trạng thái 'giám sát giữa tháng, không sửa' chưa có trong kpi_reports.status",
+        "Schema evidence cho Excel, audit auto_source, role HRBP chưa tồn tại"
+      ]
+    }
+  ]
+}
