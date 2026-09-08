@@ -58,7 +58,7 @@
     { "id": "truong_phong", "lane": "approval_final", "col": 2, "type": "security", "label": "Trưởng Phòng Duyệt", "sublabel": "sau khi cả 2 TBP xong", "width": 148 },
     { "id": "lock_monitor", "lane": "system", "col": 3, "type": "database", "label": "Khoá Mục Tiêu + Giám Sát", "sublabel": "giữa tháng: xem — không sửa", "tag": "trạng thái mới", "width": 178 },
     { "id": "finalize", "lane": "system", "col": 4, "type": "backend", "label": "Đối Chiếu + Khoá + Xuất Excel", "sublabel": "cuối tháng, sau duyệt lại 3 cấp", "width": 212 },
-    { "id": "hrbp", "lane": "hr", "col": 5, "type": "external", "label": "HRBP", "sublabel": "route /kpi riêng, RBAC", "width": 132 }
+    { "id": "hrbp", "lane": "hr", "col": 5, "type": "external", "label": "HRBP", "sublabel": "route /kpi, guard cứng", "width": 148 }
   ],
   "edges": [
     { "id": "reg_ptda-tbp_ptda", "from": "reg_ptda", "to": "tbp_ptda", "label": "nộp đăng ký", "variant": "emphasis" },
@@ -72,12 +72,13 @@
   "cards": [
     {
       "dot": "cyan",
-      "title": "Đã chốt qua Socratic drill (07/09/2026)",
+      "title": "Đã chốt + code xong (08/09/2026)",
       "items": [
-        "Cascade model = decompose: trọng số giao trước khi biết actual date",
-        "Cơ cấu Phòng Dự Án = 2 bộ phận (PTDA, TKDA), không phải 4",
-        "PTDA đăng ký từ project_requests/survey_reports/scenario_baselines (SOP_PTDA); TKDA đăng ký từ tasks + progress_items dự án lớn",
-        "Route /kpi tách riêng khỏi PMODashboard.tsx, RBAC theo route + RLS"
+        "Cascade model = decompose; Phòng Dự Án = 2 bộ phận (PTDA, TKDA)",
+        "PTDA đăng ký từ project_requests/survey_reports/scenario_baselines; TKDA từ tasks + progress_items",
+        "Route /kpi tách khỏi PMODashboard.tsx, nav đặt ngay dưới Dashboard trong sidebar",
+        "RBAC HRBP thật: Phòng Hành Chính Nhân Sự (role viewer) + RLS can_read_kpi() + route guard cứng (AccessGate redirect nếu != /kpi)",
+        "Không cần cron/edge function ở phạm vi hiện tại — mọi tính toán chạy client-side theo yêu cầu"
       ]
     },
     {
@@ -85,9 +86,10 @@
       "title": "Còn mở — chưa chốt",
       "items": [
         "Trọng số tự đặt chủ quan — vi phạm 'bằng chứng độc lập' (Nguyên tắc 2)",
-        "Trạng thái 'giám sát giữa tháng, không sửa' chưa có trong kpi_reports.status",
-        "Schema evidence cho Excel, audit auto_source, role HRBP chưa tồn tại",
-        "PTDA còn 12 mục Pending Drill trong SOP_PTDA_V1 (SLA, technical validation, reconcile...) — chưa đủ rõ để làm KPI item chi tiết"
+        "Trạng thái 'giám sát giữa tháng, không sửa' chưa có field riêng trong DB (Occam's Razor: dùng chung state với 'chờ duyệt')",
+        "Multi-state lock batch table + break-glass flag — thiết kế đã chốt, CHƯA có migration thật",
+        "Sẽ CẦN cron + edge function khi build auto-khoá theo deadline cứng + auto-email HR (chưa build)",
+        "PTDA còn 12 mục Pending Drill trong SOP_PTDA_V1 — chưa đủ rõ để làm KPI item chi tiết"
       ]
     }
   ]
