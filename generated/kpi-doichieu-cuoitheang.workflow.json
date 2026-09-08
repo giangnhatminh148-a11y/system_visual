@@ -1,0 +1,74 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "KPI — Đối Chiếu Cuối Tháng (Vòng 2/2)",
+    "quality_profile": "showcase",
+    "views": [
+      {
+        "id": "happy-path",
+        "label": "Nhập kết quả đến gửi HRBP",
+        "focus": ["result_ptda", "result_tkda", "tbp_ptda", "tbp_tkda", "truong_phong", "finalize", "hrbp_final"],
+        "note": "Vòng 2/2 trong chu kỳ tháng — kết quả PHẢI đi lại đúng AND-join (không phải bỏ qua duyệt), rồi mới khoá + xuất Excel + gửi HRBP."
+      },
+      {
+        "id": "and-join-2",
+        "label": "AND-join duyệt lại kết quả",
+        "focus": ["result_ptda", "result_tkda", "tbp_ptda", "tbp_tkda", "truong_phong"],
+        "note": "Cùng 3 actor duyệt như vòng 1 (đăng ký) — lần này duyệt KẾT QUẢ thực hiện, không phải mục tiêu."
+      }
+    ]
+  },
+  "lanes": [
+    { "id": "dept_ptda", "label": "Bộ Phận PTDA" },
+    { "id": "dept_tkda", "label": "Bộ Phận TKDA" },
+    { "id": "approval_final", "label": "Trưởng Phòng", "variant": "exception" },
+    { "id": "system", "label": "Hệ Thống KPI" },
+    { "id": "hr", "label": "HRBP" }
+  ],
+  "phases": [
+    { "id": "ketqua", "label": "Nhập Kết Quả — Theo Bộ Phận", "fromCol": 0, "toCol": 0 },
+    { "id": "duyetlai", "label": "Duyệt Lại (AND-join)", "fromCol": 1, "toCol": 2, "variant": "emphasis" },
+    { "id": "chot", "label": "Khoá + Xuất Excel + Gửi HRBP", "fromCol": 3, "toCol": 4, "variant": "dashed" }
+  ],
+  "groups": [
+    { "id": "and_join_group_2", "label": "AND-join: cần cả 2 TBP", "lane": "dept_ptda", "fromCol": 1, "toCol": 1, "variant": "security" }
+  ],
+  "mainPath": ["result_ptda", "tbp_ptda", "truong_phong", "finalize", "hrbp_final"],
+  "nodes": [
+    { "id": "result_ptda", "lane": "dept_ptda", "col": 0, "type": "frontend", "label": "CV/NV PTDA Nhập Kết Quả", "sublabel": "auto_value + manual override", "width": 232 },
+    { "id": "result_tkda", "lane": "dept_tkda", "col": 0, "type": "frontend", "label": "PM TKDA Nhập Kết Quả", "sublabel": "auto_value + manual override", "width": 232 },
+    { "id": "tbp_ptda", "lane": "dept_ptda", "col": 1, "type": "security", "label": "TBP PTDA Duyệt", "sublabel": "duyệt kết quả PTDA", "width": 148 },
+    { "id": "tbp_tkda", "lane": "dept_tkda", "col": 1, "type": "security", "label": "TBP TKDA Duyệt", "sublabel": "duyệt kết quả TKDA", "width": 148 },
+    { "id": "truong_phong", "lane": "approval_final", "col": 2, "type": "security", "label": "Trưởng Phòng Duyệt", "sublabel": "sau khi cả 2 TBP xong", "width": 148 },
+    { "id": "finalize", "lane": "system", "col": 3, "type": "backend", "label": "Khoá Kết Quả + Xuất Excel", "sublabel": "1 sheet Phòng + N sheet cá nhân", "width": 192 },
+    { "id": "hrbp_final", "lane": "hr", "col": 4, "type": "external", "label": "HRBP Nhận Đối Chiếu", "sublabel": "cuối tháng — vòng 2/2", "width": 178 }
+  ],
+  "edges": [
+    { "id": "result_ptda-tbp_ptda", "from": "result_ptda", "to": "tbp_ptda", "label": "nộp kết quả", "variant": "emphasis" },
+    { "id": "result_tkda-tbp_tkda", "from": "result_tkda", "to": "tbp_tkda", "label": "nộp kết quả", "variant": "emphasis" },
+    { "id": "ptda-final", "from": "tbp_ptda", "to": "truong_phong", "label": "nhánh 1/2", "variant": "security" },
+    { "id": "tkda-final", "from": "tbp_tkda", "to": "truong_phong", "label": "nhánh 2/2", "variant": "security" },
+    { "id": "final-finalize", "from": "truong_phong", "to": "finalize", "variant": "emphasis" },
+    { "id": "finalize-hrbpfinal", "from": "finalize", "to": "hrbp_final", "variant": "emphasis" }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "Vòng 2/2 — Đối Chiếu Cuối Tháng",
+      "items": [
+        "Kết quả PHẢI đi lại AND-join (TBP→Trưởng Phòng) — không bỏ qua duyệt, đúng lời Minh chốt",
+        "Break-glass: bất khả kháng + quy mô nhỏ, Trưởng Phòng tự duyệt trực tiếp — có cờ hiệu (còn mở, chưa thiết kế field cụ thể)",
+        "HR là System of Record ngoài hệ thống — nội bộ chỉ theo dõi trạng thái gửi, không sửa được sau khi gửi"
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "Nối từ vòng 1/2",
+      "items": [
+        "Xem diagram 'KPI — Đăng Ký Đầu Tháng' (kpi-dangky-dautheang.workflow.html) cho vòng đăng ký/khoá mục tiêu",
+        "kpi_definitions (mục tiêu, khoá ở vòng 1) và kpi_reports (kết quả, khoá ở vòng 2) là 2 BẢNG khác nhau, 2 lock độc lập"
+      ]
+    }
+  ]
+}

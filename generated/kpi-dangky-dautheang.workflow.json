@@ -1,0 +1,76 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "KPI — Đăng Ký Đầu Tháng (Vòng 1/2)",
+    "quality_profile": "showcase",
+    "views": [
+      {
+        "id": "happy-path",
+        "label": "Đăng ký đến khoá + gửi HRBP",
+        "focus": ["reg_ptda", "reg_tkda", "tbp_ptda", "tbp_tkda", "truong_phong", "lock", "hrbp_intake"],
+        "note": "Vòng 1/2 trong chu kỳ tháng — đăng ký mục tiêu/trọng số, duyệt phân cấp, khoá, gửi HRBP. Xem vòng 2/2 ở diagram Đối Chiếu Cuối Tháng."
+      },
+      {
+        "id": "and-join",
+        "label": "AND-join duyệt phân cấp",
+        "focus": ["reg_ptda", "reg_tkda", "tbp_ptda", "tbp_tkda", "truong_phong"],
+        "note": "Trưởng Phòng chỉ duyệt sau khi CẢ 2 TBP xong — mỗi TBP duyệt đúng nguồn dữ liệu bộ phận mình."
+      }
+    ]
+  },
+  "lanes": [
+    { "id": "dept_ptda", "label": "Bộ Phận PTDA" },
+    { "id": "dept_tkda", "label": "Bộ Phận TKDA" },
+    { "id": "approval_final", "label": "Trưởng Phòng", "variant": "exception" },
+    { "id": "system", "label": "Hệ Thống KPI" },
+    { "id": "hr", "label": "HRBP" }
+  ],
+  "phases": [
+    { "id": "dangky", "label": "Đăng Ký — Theo Bộ Phận", "fromCol": 0, "toCol": 0 },
+    { "id": "duyet", "label": "Duyệt Phân Cấp (AND-join)", "fromCol": 1, "toCol": 2, "variant": "emphasis" },
+    { "id": "khoa", "label": "Khoá + Gửi HRBP", "fromCol": 3, "toCol": 4, "variant": "dashed" }
+  ],
+  "groups": [
+    { "id": "and_join_group", "label": "AND-join: cần cả 2 TBP", "lane": "dept_ptda", "fromCol": 1, "toCol": 1, "variant": "security" },
+    { "id": "open_risk_ptda", "label": "Chưa chuẩn hoá trọng số", "lane": "dept_ptda", "fromCol": 0, "toCol": 0, "variant": "dashed" },
+    { "id": "open_risk_tkda", "label": "Chưa chuẩn hoá trọng số", "lane": "dept_tkda", "fromCol": 0, "toCol": 0, "variant": "dashed" }
+  ],
+  "mainPath": ["reg_ptda", "tbp_ptda", "truong_phong", "lock", "hrbp_intake"],
+  "nodes": [
+    { "id": "reg_ptda", "lane": "dept_ptda", "col": 0, "type": "frontend", "label": "CV/NV PTDA Đăng Ký", "sublabel": "nguồn: request/survey/scenario", "tag": "trọng số còn mở", "width": 232 },
+    { "id": "reg_tkda", "lane": "dept_tkda", "col": 0, "type": "frontend", "label": "PM TKDA Đăng Ký", "sublabel": "nguồn: tasks + tiến độ dự án", "tag": "trọng số còn mở", "width": 232 },
+    { "id": "tbp_ptda", "lane": "dept_ptda", "col": 1, "type": "security", "label": "TBP PTDA Duyệt", "sublabel": "duyệt đúng nguồn PTDA", "width": 148 },
+    { "id": "tbp_tkda", "lane": "dept_tkda", "col": 1, "type": "security", "label": "TBP TKDA Duyệt", "sublabel": "duyệt đúng nguồn TKDA", "width": 148 },
+    { "id": "truong_phong", "lane": "approval_final", "col": 2, "type": "security", "label": "Trưởng Phòng Duyệt", "sublabel": "sau khi cả 2 TBP xong", "width": 148 },
+    { "id": "lock", "lane": "system", "col": 3, "type": "database", "label": "Khoá Mục Tiêu", "sublabel": "1 batch cấp Phòng", "tag": "trạng thái mới", "width": 158 },
+    { "id": "hrbp_intake", "lane": "hr", "col": 4, "type": "external", "label": "HRBP Nhận Đăng Ký", "sublabel": "đầu tháng — vòng 1/2", "width": 178 }
+  ],
+  "edges": [
+    { "id": "reg_ptda-tbp_ptda", "from": "reg_ptda", "to": "tbp_ptda", "label": "nộp đăng ký", "variant": "emphasis" },
+    { "id": "reg_tkda-tbp_tkda", "from": "reg_tkda", "to": "tbp_tkda", "label": "nộp đăng ký", "variant": "emphasis" },
+    { "id": "ptda-final", "from": "tbp_ptda", "to": "truong_phong", "label": "nhánh 1/2", "variant": "security" },
+    { "id": "tkda-final", "from": "tbp_tkda", "to": "truong_phong", "label": "nhánh 2/2", "variant": "security" },
+    { "id": "final-lock", "from": "truong_phong", "to": "lock", "variant": "emphasis" },
+    { "id": "lock-hrbpintake", "from": "lock", "to": "hrbp_intake", "variant": "emphasis" }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "Vòng 1/2 — Đăng Ký Đầu Tháng",
+      "items": [
+        "Cascade model = decompose: trọng số giao trước khi biết actual date",
+        "Granularity lock = 1 batch DUY NHẤT cấp Phòng (không tách theo bộ phận)",
+        "Sau khi khoá: sang trạng thái 'giám sát giữa tháng' — CÙNG 1 state (Occam's Razor), không phải state riêng"
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "Nối sang vòng 2/2",
+      "items": [
+        "Xem diagram 'KPI — Đối Chiếu Cuối Tháng' (kpi-doichieu-cuoitheang.workflow.html) cho vòng duyệt lại kết quả",
+        "3 actor duyệt (TBP PTDA/TKDA, Trưởng Phòng) LẶP LẠI ở vòng 2 — không phải người khác, chỉ khác thời điểm và nội dung duyệt"
+      ]
+    }
+  ]
+}
