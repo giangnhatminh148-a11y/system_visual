@@ -8,8 +8,14 @@
       {
         "id": "happy-path",
         "label": "Đăng ký đến giao HRBP",
-        "focus": ["reg_ptda", "reg_tkda", "tbp_ptda", "tbp_tkda", "truong_phong", "lock_monitor", "finalize", "hrbp"],
-        "note": "Toàn bộ chu kỳ 1 tháng: 2 nguồn dữ liệu khác nhau theo bộ phận, hội tụ ở Trưởng Phòng, đến khi HRBP nhận báo cáo."
+        "focus": ["reg_ptda", "reg_tkda", "tbp_ptda", "tbp_tkda", "truong_phong", "lock_monitor", "hrbp_intake", "finalize", "hrbp_final"],
+        "note": "Toàn bộ chu kỳ 1 tháng: 2 nguồn dữ liệu theo bộ phận, hội tụ ở Trưởng Phòng, HRBP nhận CẢ đầu tháng lẫn cuối tháng."
+      },
+      {
+        "id": "hrbp-twice",
+        "label": "HRBP nhận 2 lần/tháng",
+        "focus": ["lock_monitor", "hrbp_intake", "finalize", "hrbp_final"],
+        "note": "Đầu tháng: nhận danh sách đăng ký để khoá. Cuối tháng: nhận file đối chiếu % + kết quả. 2 mốc khác nhau, không phải 1."
       },
       {
         "id": "and-join",
@@ -27,7 +33,7 @@
         "id": "open-risk",
         "label": "Điểm còn mở (chưa chốt)",
         "focus": ["reg_ptda", "reg_tkda", "lock_monitor"],
-        "note": "Trọng số tự đặt chưa chuẩn hoá SOP-WBS; trạng thái giám sát giữa tháng chưa có trong schema kpi_reports hiện tại."
+        "note": "Trọng số tự đặt chưa chuẩn hoá SOP-WBS; trạng thái giám sát giữa tháng chưa có field riêng trong DB."
       }
     ]
   },
@@ -41,7 +47,7 @@
   "phases": [
     { "id": "dangky", "label": "Đăng Ký Đầu Tháng — Theo Bộ Phận", "fromCol": 0, "toCol": 0 },
     { "id": "duyet", "label": "Duyệt Phân Cấp (AND-join)", "fromCol": 1, "toCol": 2, "variant": "emphasis" },
-    { "id": "vanhanh", "label": "Giám Sát + Chốt Cuối Tháng", "fromCol": 3, "toCol": 5, "variant": "dashed" }
+    { "id": "vanhanh", "label": "Khoá Đầu Tháng → Giám Sát → Đối Chiếu Cuối Tháng", "fromCol": 3, "toCol": 5, "variant": "dashed" }
   ],
   "groups": [
     { "id": "and_join_group", "label": "AND-join: cần cả 2 TBP", "lane": "dept_ptda", "fromCol": 1, "toCol": 1, "variant": "security" },
@@ -49,7 +55,7 @@
     { "id": "open_risk_tkda", "label": "Chưa chuẩn hoá trọng số", "lane": "dept_tkda", "fromCol": 0, "toCol": 0, "variant": "dashed" },
     { "id": "open_risk_monitor", "label": "State mới, chưa có trong DB", "lane": "system", "fromCol": 3, "toCol": 3, "variant": "dashed" }
   ],
-  "mainPath": ["reg_ptda", "tbp_ptda", "truong_phong", "lock_monitor", "finalize", "hrbp"],
+  "mainPath": ["reg_ptda", "tbp_ptda", "truong_phong", "lock_monitor", "finalize", "hrbp_final"],
   "nodes": [
     { "id": "reg_ptda", "lane": "dept_ptda", "col": 0, "type": "frontend", "label": "CV/NV PTDA Đăng Ký", "sublabel": "nguồn: request/survey/scenario", "tag": "trọng số còn mở", "width": 232 },
     { "id": "reg_tkda", "lane": "dept_tkda", "col": 0, "type": "frontend", "label": "PM TKDA Đăng Ký", "sublabel": "nguồn: tasks + tiến độ dự án", "tag": "trọng số còn mở", "width": 232 },
@@ -57,8 +63,9 @@
     { "id": "tbp_tkda", "lane": "dept_tkda", "col": 1, "type": "security", "label": "TBP TKDA Duyệt", "sublabel": "duyệt đúng nguồn TKDA", "width": 148 },
     { "id": "truong_phong", "lane": "approval_final", "col": 2, "type": "security", "label": "Trưởng Phòng Duyệt", "sublabel": "sau khi cả 2 TBP xong", "width": 148 },
     { "id": "lock_monitor", "lane": "system", "col": 3, "type": "database", "label": "Khoá Mục Tiêu + Giám Sát", "sublabel": "giữa tháng: xem — không sửa", "tag": "trạng thái mới", "width": 178 },
+    { "id": "hrbp_intake", "lane": "hr", "col": 3, "type": "external", "label": "HRBP Nhận Đăng Ký", "sublabel": "đầu tháng, khoá chỉnh sửa", "width": 178 },
     { "id": "finalize", "lane": "system", "col": 4, "type": "backend", "label": "Đối Chiếu + Khoá + Xuất Excel", "sublabel": "cuối tháng, sau duyệt lại 3 cấp", "width": 212 },
-    { "id": "hrbp", "lane": "hr", "col": 5, "type": "external", "label": "HRBP", "sublabel": "route /kpi, guard cứng", "width": 148 }
+    { "id": "hrbp_final", "lane": "hr", "col": 5, "type": "external", "label": "HRBP Nhận Đối Chiếu", "sublabel": "cuối tháng, %+kết quả", "width": 168 }
   ],
   "edges": [
     { "id": "reg_ptda-tbp_ptda", "from": "reg_ptda", "to": "tbp_ptda", "label": "nộp đăng ký", "variant": "emphasis" },
@@ -66,8 +73,9 @@
     { "id": "ptda-final", "from": "tbp_ptda", "to": "truong_phong", "label": "nhánh 1/2", "variant": "security" },
     { "id": "tkda-final", "from": "tbp_tkda", "to": "truong_phong", "label": "nhánh 2/2", "variant": "security" },
     { "id": "final-lockmonitor", "from": "truong_phong", "to": "lock_monitor", "variant": "emphasis" },
+    { "id": "lockmonitor-hrbpintake", "from": "lock_monitor", "to": "hrbp_intake", "label": "đầu tháng: gửi danh sách", "variant": "emphasis" },
     { "id": "lockmonitor-finalize", "from": "lock_monitor", "to": "finalize", "label": "cuối tháng: đối chiếu kết quả", "variant": "dashed" },
-    { "id": "finalize-hrbp", "from": "finalize", "to": "hrbp", "variant": "emphasis" }
+    { "id": "finalize-hrbpfinal", "from": "finalize", "to": "hrbp_final", "variant": "emphasis" }
   ],
   "cards": [
     {
@@ -76,17 +84,18 @@
       "items": [
         "Cascade model = decompose; Phòng Dự Án = 2 bộ phận (PTDA, TKDA)",
         "PTDA đăng ký từ project_requests/survey_reports/scenario_baselines; TKDA từ tasks + progress_items",
+        "HRBP nhận 2 LẦN/tháng — đầu tháng (khoá đăng ký) và cuối tháng (đối chiếu) — KHÔNG phải 1 lần duy nhất",
         "Route /kpi tách khỏi PMODashboard.tsx, nav đặt ngay dưới Dashboard trong sidebar",
-        "RBAC HRBP thật: Phòng Hành Chính Nhân Sự (role viewer) + RLS can_read_kpi() + route guard cứng (AccessGate redirect nếu != /kpi)",
+        "RBAC HRBP thật: Phòng Hành Chính Nhân Sự (role viewer) + RLS can_read_kpi() + route guard cứng",
         "Không cần cron/edge function ở phạm vi hiện tại — mọi tính toán chạy client-side theo yêu cầu"
       ]
     },
     {
       "dot": "rose",
-      "title": "Còn mở — chưa chốt",
+      "title": "Còn mở — chưa chốt / MECE gap",
       "items": [
         "Trọng số tự đặt chủ quan — vi phạm 'bằng chứng độc lập' (Nguyên tắc 2)",
-        "Trạng thái 'giám sát giữa tháng, không sửa' chưa có field riêng trong DB (Occam's Razor: dùng chung state với 'chờ duyệt')",
+        "Diagram GIẢN LƯỢC: cuối tháng kết quả phải đi lại ĐÚNG AND-join (TBP→Trưởng Phòng) trước khi finalize, không phải đường thẳng lock_monitor→finalize — chưa vẽ vòng lặp duyệt lại (route ngược phức tạp, xem docs)",
         "Multi-state lock batch table + break-glass flag — thiết kế đã chốt, CHƯA có migration thật",
         "Sẽ CẦN cron + edge function khi build auto-khoá theo deadline cứng + auto-email HR (chưa build)",
         "PTDA còn 12 mục Pending Drill trong SOP_PTDA_V1 — chưa đủ rõ để làm KPI item chi tiết"
